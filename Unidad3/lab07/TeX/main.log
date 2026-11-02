@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.18)  29 OCT 2026 11:55
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.18)  1 NOV 2026 21:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/camiloasd/Documentos/VS_cc/lab_ADA_cc/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main
-(/home/camiloasd/Documentos/VS_cc/lab_ADA_cc/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex
+**/home/camiloasd/Documentos/VS_ALT/lab_ADA/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex
+(/home/camiloasd/Documentos/VS_ALT/lab_ADA/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-03-20>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -628,8 +628,7 @@ Package: colortbl 2024/10/29 v1.0k Color table columns (DPC)
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2026-02-18 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count375
-)
-No file main.aux.
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 94.
@@ -650,6 +649,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 94.
 LaTeX Font Info:    ... okay on input line 94.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 94.
 LaTeX Font Info:    ... okay on input line 94.
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -742,10 +742,10 @@ Overfull \hbox (0.89597pt too wide) in paragraph at lines 140--148
 \pydata@fh@0=\write6
 \openout6 = `_FAD58DE7366495DB4650CFEFAC2FCD61.data.minted'.
 
-runsystem(latexminted config  --timestamp 20261029115536 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+runsystem(latexminted config  --timestamp 20261101214347 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
 
 (./_FAD58DE7366495DB4650CFEFAC2FCD61.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20261029115536 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+runsystem(latexminted cleanconfig  --timestamp 20261101214347 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
 
  (./_minted/default.style.minted) (./_minted/D245B79C2A4FF54FED2EFD8366DF7C1E.highlight.minted
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
@@ -767,7 +767,7 @@ Package pdftex.def Info: ../img/logo_abet.png  used on input line 21.
 LaTeX Warning: File `../img/e1.png' not found on input line 164.
 
 
-/home/camiloasd/Documentos/VS_cc/lab_ADA_cc/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex:164: Package pdftex.def Error: File `../img/e1.png' not found: using draft setting.
+/home/camiloasd/Documentos/VS_ALT/lab_ADA/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex:164: Package pdftex.def Error: File `../img/e1.png' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
@@ -800,7 +800,7 @@ Package pdftex.def Info: ../img/logo_abet.png  used on input line 18.
 LaTeX Warning: File `../img/e2.png' not found on input line 181.
 
 
-/home/camiloasd/Documentos/VS_cc/lab_ADA_cc/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex:181: Package pdftex.def Error: File `../img/e2.png' not found: using draft setting.
+/home/camiloasd/Documentos/VS_ALT/lab_ADA/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex:181: Package pdftex.def Error: File `../img/e2.png' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
@@ -836,7 +836,7 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <8> not available
 LaTeX Warning: File `../img/e3.png' not found on input line 198.
 
 
-/home/camiloasd/Documentos/VS_cc/lab_ADA_cc/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex:198: Package pdftex.def Error: File `../img/e3.png' not found: using draft setting.
+/home/camiloasd/Documentos/VS_ALT/lab_ADA/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex:198: Package pdftex.def Error: File `../img/e3.png' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
@@ -869,7 +869,7 @@ Package pdftex.def Info: ../img/logo_abet.png  used on input line 18.
 LaTeX Warning: File `../img/e4.png' not found on input line 215.
 
 
-/home/camiloasd/Documentos/VS_cc/lab_ADA_cc/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex:215: Package pdftex.def Error: File `../img/e4.png' not found: using draft setting.
+/home/camiloasd/Documentos/VS_ALT/lab_ADA/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex:215: Package pdftex.def Error: File `../img/e4.png' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
@@ -902,7 +902,7 @@ Package pdftex.def Info: ../img/logo_abet.png  used on input line 18.
 LaTeX Warning: File `../img/e5.png' not found on input line 232.
 
 
-/home/camiloasd/Documentos/VS_cc/lab_ADA_cc/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex:232: Package pdftex.def Error: File `../img/e5.png' not found: using draft setting.
+/home/camiloasd/Documentos/VS_ALT/lab_ADA/ActividadesLaboratorioADA-A/Unidad3/lab07/TeX/main.tex:232: Package pdftex.def Error: File `../img/e5.png' not found: using draft setting.
 
 See the pdftex.def package documentation for explanation.
 Type  H <return>  for immediate help.
@@ -933,7 +933,7 @@ Package pdftex.def Info: ../img/logo_abet.png  used on input line 274.
  [11]
 \openout6 = `_FAD58DE7366495DB4650CFEFAC2FCD61.data.minted'.
 
-runsystem(latexminted clean  --timestamp 20261029115536 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+runsystem(latexminted clean  --timestamp 20261101214347 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
 
  (./main.aux
 LaTeX Info: Redefining \. on input line 13.
@@ -959,13 +959,13 @@ Package rerunfilecheck Info: Checksums for `main.out':
 (rerunfilecheck)             After:  2190A2D61BEB5EE72AD837EC51CEBE34;982.
  ) 
 Here is how much of TeX's memory you used:
- 21662 strings out of 467356
- 416541 string characters out of 5418691
+ 21665 strings out of 467356
+ 416574 string characters out of 5418691
  1017616 words of memory out of 6000000
- 50377 multiletter control sequences out of 15000+600000
+ 50378 multiletter control sequences out of 15000+600000
  634435 words of font info for 66 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,16n,93p,830b,1126s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,16n,93p,832b,1126s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
 Output written on main.pdf (11 pages, 172180 bytes).
 PDF statistics:
