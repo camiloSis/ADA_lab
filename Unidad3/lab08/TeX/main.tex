@@ -40,10 +40,10 @@
 \newcommand{\itemDepartment}{Departamento Académico de Ingeniería de Sistemas e Informática}
 \newcommand{\itemSchool}{Escuela Profesional de Ingeniería de Sistemas}
 \newcommand{\itemAcademic}{2026 - B}
-\newcommand{\itemInput}{------}
-\newcommand{\itemOutput}{------}
+\newcommand{\itemInput}{05/11/2026}
+\newcommand{\itemOutput}{--/11/2026}
 \newcommand{\itemPracticeNumber}{08}
-\newcommand{\itemTheme}{Práctica de laboratorio 08}
+\newcommand{\itemTheme}{Métodos Heurísticos: Problemas NP y Búsqueda Aleatoria (Monte Carlo)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -150,7 +150,7 @@
 \section{Ejercicios/Problemas propuestos}
 
 \subsection{Ejercicio 1}
-/relleno
+Implementa fuerza bruta para un TSP de 10 ciudades generadas aleatoriamente, y mide cuánto tiempo tarda en encontrar la solución óptima.
 \inputminted{cpp}{../e-n/e1.cpp}
 
 \begin{itemize}
@@ -165,7 +165,7 @@
 \end{figure}
 
 \subsection{Ejercicio 2}
-/relleno
+Implementa búsqueda aleatoria (Monte Carlo) para el mismo TSP de 10 ciudades del ejercicio anterior, con distintos números de iteraciones (100, 1 000, 10 000), y compara qué tan cerca queda del óptimo real en cada caso.
 \inputminted{cpp}{../e-n/e2.cpp}
 
 \begin{itemize}
@@ -180,7 +180,7 @@
 \end{figure}
 
 \subsection{Ejercicio 3}
-/relleno
+Modela una versión simplificada del problema de programación de líneas de producción (por ejemplo, 6 tareas y 2 líneas) y resuélvela con búsqueda aleatoria, minimizando el tiempo total de finalización.
 \inputminted{cpp}{../e-n/e3.cpp}
 
 \begin{itemize}
@@ -195,7 +195,7 @@
 \end{figure}
 
 \subsection{Ejercicio 4}
-/relleno
+Genera la gráfica de crecimiento del espacio de soluciones (como la Figura 3) para un problema de asignación de tareas (n! en vez de (n-1)!/2) y compárala con la del TSP.
 \inputminted{cpp}{../e-n/e4.cpp}
 
 \begin{itemize}
@@ -210,7 +210,7 @@
 \end{figure}
 
 \subsection{Ejercicio 5}
-/relleno
+Investiga y documenta un caso real donde se use el TSP o un problema de programación de líneas de producción (logística de reparto, planificación de manufactura, diseño de circuitos), indicando aproximadamente cuántas ciudades o tareas maneja en la práctica.
 \inputminted{cpp}{../e-n/e5.cpp}
 
 \begin{itemize}
@@ -225,7 +225,13 @@
 \end{figure}
 
 \section{Cuestionario}
-% Pendiente de completar.
+\begin{itemize}
+	\item ¿Cuál es la diferencia entre un problema de clase P y uno de clase NP?
+	\item ¿Por qué se dice que el TSP es un problema NP-difícil?
+	\item ¿Qué ventaja y qué desventaja principal tiene la búsqueda aleatoria (Monte Carlo) frente a la fuerza bruta?
+	\item Si se aumenta el número de iteraciones de Monte Carlo, ¿qué se puede afirmar y qué NO se puede afirmar sobre la calidad de la solución encontrada?
+	\item ¿Por qué la búsqueda aleatoria se considera solo un ``primer intento'' y no una solución definitiva para problemas NP-difíciles?
+\end{itemize}
 
 \section{Conclusiones}
 % Pendiente de completar.
