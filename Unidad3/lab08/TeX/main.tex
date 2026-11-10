@@ -221,18 +221,14 @@ Genera la gráfica de crecimiento del espacio de soluciones (como la Figura 3) p
 
 \subsection{Ejercicio 5}
 Investiga y documenta un caso real donde se use el TSP o un problema de programación de líneas de producción (logística de reparto, planificación de manufactura, diseño de circuitos), indicando aproximadamente cuántas ciudades o tareas maneja en la práctica.
-\inputminted{cpp}{../e-n/e5.cpp}
 
-\begin{itemize}
-    \item /relleno
-\end{itemize}
+\noindent\textbf{Caso y objetivo.} ORION (\emph{On-Road Integrated Optimization and Navigation}) es el sistema de UPS que organiza las rutas diarias de reparto y recogida. Para cada conductor busca un orden de visita que reduzca el tiempo y la distancia, comenzando y terminando en el centro de distribución.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{../img/e5.png}
-    \caption{Ejecución del ejercicio 5}
-    \label{fig:e5}
-\end{figure}
+\noindent\textbf{Relación con el TSP y tamaño.} Cada dirección puede verse como una ciudad del TSP. Una ruta típica comprende aproximadamente entre 120 y 160 paradas por conductor. Con el depósito fijo, $n$ paradas admiten $n!$ órdenes posibles; por ejemplo, $120!\approx 6{,}7\times10^{198}$. Por eso no resulta práctico evaluar todas las rutas, como se hace en fuerza bruta para instancias pequeñas.
+
+\noindent\textbf{Restricciones y método.} El problema real añade ventanas horarias, tráfico, seguridad (por ejemplo, penalizar giros a la izquierda), y límites para que el orden de las visitas no se aparte demasiado de la ruta habitual. Los costos también pueden ser asimétricos: ir de una dirección a otra no necesariamente cuesta lo mismo que hacer el trayecto inverso. UPS descartó resolver el modelo con un método exacto por su lentitud y emplea una metaheurística de búsqueda local que combina mejoras de rutas y recocido simulado, entre otras técnicas. Su detalle completo no es público; por tanto, no debe confundirse con la búsqueda Monte Carlo aleatoria simple del ejercicio 2.
+
+\noindent\textbf{Operación e impacto.} ORION calcula rutas mientras se cargan los vehículos y puede volver a optimizarlas durante la jornada cuando cambian el tráfico o las entregas. UPS ha reportado ahorros cercanos a 100 millones de millas recorridas y 10 millones de galones de combustible al año. Son cifras comunicadas por la empresa y deben entenderse como resultados reportados, no como una medición independiente presentada aquí.
 
 \section{Cuestionario}
 \begin{itemize}
