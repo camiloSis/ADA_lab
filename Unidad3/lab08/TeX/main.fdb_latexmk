@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1794281697.58458 "/home/camiloasd/Documentos/VS/Laboratorio-ADA/Unidad3/lab08/TeX/main.tex" "main.pdf" "main" 1794281709.88735 2
-  "../e-n/crecimiento.svg" 1794281151.07262 8541 ba2a067f2289569fb371a484c72a2d38 ""
+["pdflatex"] 1794281947.35012 "main.tex" "main.pdf" "main" 1794281957.39566 2
+  "../e-n/crecimiento.pdf" 1794281924.5912 19311 86356655c18c1652e4a6f2f31be16669 ""
   "../e-n/e1.cpp" 1793887536.72577 1551 b87e334afb90bc02379a95ef4ebfe805 ""
   "../e-n/e2.cpp" 1793887696.6506 2771 bad8abfabcb0493076fa549d513085a5 ""
   "../e-n/e3.cpp" 1793887768.06859 3028 57195bc3d2dbeb8b735e17b64dbe6c5d ""
@@ -13,7 +13,7 @@
   "../img/e5.png" 0 -1 0 ""
   "../img/logo_abet.png" 1790552468.78584 6307 66ff7f82180b3b29c348bdae974447b6 ""
   "../img/logo_episunsa.png" 1790552468.78667 6815 7da1fe7727dad63b523d0fbca337594d ""
-  "/home/camiloasd/Documentos/VS/Laboratorio-ADA/Unidad3/lab08/TeX/main.tex" 1794281687.16814 10937 5d897160c689c6568e8301bb9bdeab4b ""
+  "/home/camiloasd/Documentos/VS/Laboratorio-ADA/Unidad3/lab08/TeX/main.tex" 1794281940.05431 10934 207cbb0b15f8f7682abb89328cbf4a46 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -64,6 +64,7 @@
   "/usr/share/texlive/texmf-dist/tex/generic/catchfile/catchfile.sty" 1576016007 8622 63834878edeb14dd71d58d8f22bc3e06 ""
   "/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty" 1576625273 7734 b98cbb34c81f667027c1e3ebdbfce34b ""
   "/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty" 1576625223 8371 9d55b8bd010bc717624922fb3477d92e ""
+  "/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty" 1572645307 492 1994775aa15b0d1289725a0b1bbc2d4c ""
   "/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty" 1734129479 7984 7dbb9280f03c0a315425f1b4f35d43ee ""
   "/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty" 1572645307 1057 525c2192b5febbd8c1f662c9468335bb ""
   "/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty" 1575499628 8356 7bbb2c2373aa810be568c29e333da8ed ""
@@ -125,6 +126,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty" 1769721417 11459 697f11f6c439d25d39d2674b99566af4 ""
   "/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def" 1777145858 14249 7b55182dcc5724adaf8997085683ebc1 ""
   "/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def" 1777145858 117118 2cabdbf2b74662802f142d352392bed5 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty" 1507930826 3910 e04f6a6d983bdbdb024917b7ccc80262 ""
   "/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrbase.sty" 1770066728 101071 5c33e7845f9afaab8705ab53e1c47a1a ""
   "/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile-hook.sty" 1770066728 11187 bb19b68b7570b0a5839776e49029dfc6 ""
   "/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrlfile.sty" 1770066728 3330 524ef98f49a363d012453fece1f26677 ""
@@ -169,9 +171,9 @@
   "_minted/F247AC8E0E5E85B2B763CE9C29E6E92D.highlight.minted" 1793887774.43399 14570 71f713508f535e8807f2bdee2a144513 ""
   "_minted/_FAD58DE7366495DB4650CFEFAC2FCD61.index.minted" 1793887849.39777 490 ec9be70b9fd10d409c431b98f9dfd67e ""
   "_minted/default.style.minted" 1793885422.31335 6426 e1fb43a91491f41b33310478eee48cdb ""
-  "main.aux" 1794281709.33148 3206 114fefa8b9c9407bc460ce67080fd79c "pdflatex"
-  "main.out" 1794281709.35448 982 2190a2d61beb5ee72ad837ec51cebe34 "pdflatex"
-  "main.tex" 1794281687.16814 10937 5d897160c689c6568e8301bb9bdeab4b ""
+  "main.aux" 1794281956.92224 3209 25a891abf8e2822bd570724a087f54af "pdflatex"
+  "main.out" 1794281956.94824 982 2190a2d61beb5ee72ad837ec51cebe34 "pdflatex"
+  "main.tex" 1794281940.05431 10934 207cbb0b15f8f7682abb89328cbf4a46 ""
   (generated)
   "main.aux"
   "main.log"
