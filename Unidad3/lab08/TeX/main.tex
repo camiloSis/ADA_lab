@@ -1,16 +1,15 @@
 %package list
 \documentclass{article}
 \usepackage{amsmath}
+\usepackage{booktabs,tabularx}
 \usepackage[top=3cm, bottom=3cm, outer=3cm, inner=3cm]{geometry}
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{url}
 %\usepackage{cite}
-\usepackage{hyperref}
 \usepackage{array}
 %\usepackage{multicol}
 \newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
-\usepackage{natbib}
 \usepackage{pdfpages}
 \usepackage{multirow}
 \usepackage[normalem]{ulem}
@@ -47,8 +46,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[english,spanish]{babel}
+\usepackage[spanish,es-noshorthands]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage[backend=biber,style=authoryear]{biblatex}
+\addbibresource{referencias.bib}
+\usepackage{hyperref}
 \AtBeginDocument{\selectlanguage{spanish}}
 \renewcommand{\figurename}{Figura}
 \renewcommand{\refname}{Referencias}
@@ -220,51 +223,94 @@ Genera la gráfica de crecimiento del espacio de soluciones (como la Figura 3) p
 
 
 \subsection{Ejercicio 5}
-Investiga y documenta un caso real donde se use el TSP o un problema de programación de líneas de producción (logística de reparto, planificación de manufactura, diseño de circuitos), indicando aproximadamente cuántas ciudades o tareas maneja en la práctica.
+\subsubsection{Caso y relación con el TSP}
+ORION (\emph{On-Road Integrated Optimization and Navigation}) es el sistema de UPS que organiza las rutas diarias de reparto y recogida. Para cada conductor determina el orden de visita de sus direcciones con el objetivo de reducir el costo de operación; \textcite{holland2017} describen su aplicación en la logística de UPS.
 
-\noindent\textbf{Caso y objetivo.} ORION (\emph{On-Road Integrated Optimization and Navigation}) es el sistema de UPS que organiza las rutas diarias de reparto y recogida. Para cada conductor busca un orden de visita que reduzca el tiempo y la distancia, comenzando y terminando en el centro de distribución.
+En el modelo, los vértices representan las paradas de entrega o recogida y el depósito, que funciona como origen y destino. El costo $c_{ij}$ de pasar de una parada $i$ a otra $j$ considera el tiempo y el millaje de viaje, además del servicio al cliente; por eso no equivale simplemente a distancia y puede ser asimétrico \parencite{holland2017}. El TSP clásico puede expresarse como:
+\begin{equation}
+	\min \sum_{(i,j)\in A} c_{ij}x_{ij}, \qquad
+	\sum_j x_{ij}=1,\quad \sum_i x_{ij}=1,\quad x_{ij}\in\{0,1\},
+	\label{ej5-eq:tsp}
+\end{equation}
+donde $x_{ij}=1$ indica que $j$ se visita inmediatamente después de $i$; se agregan restricciones para evitar subtours. ORION amplía este modelo a un TSP con ventanas de tiempo (TSPTW): debe atender horarios comprometidos y mantener cierta consistencia con el orden habitual de las paradas \parencite{holland2017}.
 
-\noindent\textbf{Relación con el TSP y tamaño.} Cada dirección puede verse como una ciudad del TSP. Una ruta típica comprende aproximadamente entre 120 y 160 paradas por conductor. Con el depósito fijo, $n$ paradas admiten $n!$ órdenes posibles; por ejemplo, $120!\approx 6{,}7\times10^{198}$. Por eso no resulta práctico evaluar todas las rutas, como se hace en fuerza bruta para instancias pequeñas.
+\begin{table}[H]
+\centering\small
+\caption{Diferencias entre el TSP clásico y el problema de rutas de UPS}
+\label{ej5-tab:diferencias}
+\begin{tabularx}{0.96\textwidth}{@{}l X X@{}}
+\toprule
+Aspecto & TSP clásico & Problema de UPS \\
+\midrule
+Costo & Distancia o costo de cada arco & Viaje y servicio, medidos en tiempo y millaje; puede ser asimétrico \\
+Tiempo & Sin horarios de atención & Ventanas horarias y penalización por retrasos \\
+Consistencia & No se considera & Se limita cuánto puede variar la posición de cada cliente respecto a la ruta base \\
+Operación & Datos fijos, sin criterios de seguridad & Considera tráfico, seguridad en giros y cambios de la jornada \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
-\noindent\textbf{Restricciones y método.} El problema real añade ventanas horarias, tráfico, seguridad (por ejemplo, penalizar giros a la izquierda), y límites para que el orden de las visitas no se aparte demasiado de la ruta habitual. Los costos también pueden ser asimétricos: ir de una dirección a otra no necesariamente cuesta lo mismo que hacer el trayecto inverso. UPS descartó resolver el modelo con un método exacto por su lentitud y emplea una metaheurística de búsqueda local que combina mejoras de rutas y recocido simulado, entre otras técnicas. Su detalle completo no es público; por tanto, no debe confundirse con la búsqueda Monte Carlo aleatoria simple del ejercicio 2.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.58\textwidth]{../img/holland.png}
+	\caption{Ruta base de un \emph{loop}: segmentos AM y PM unidos en un ápice y asignados a tres furgonetas (Holland et al., 2017).}
+	\label{ej5-fig:holland}
+\end{figure}
 
-\noindent\textbf{Operación e impacto.} ORION calcula rutas mientras se cargan los vehículos y puede volver a optimizarlas durante la jornada cuando cambian el tráfico o las entregas. UPS ha reportado ahorros cercanos a 100 millones de millas recorridas y 10 millones de galones de combustible al año. Son cifras comunicadas por la empresa y deben entenderse como resultados reportados, no como una medición independiente presentada aquí.
+\subsubsection{Optimización y escala práctica}
+UPS probó una formulación exacta del TSPTW, pero la descartó por su tiempo de resolución. El artículo de sus autores documenta una metaheurística que combina búsqueda local con variantes de Lin--Kernighan, búsqueda adaptativa de vecindad grande, relajación lagrangiana y recocido simulado \parencite{holland2017,lin1973,ropke2006,lemarechal2001,ingber1993}. El detalle de la implementación es secreto industrial. No se documenta que ORION use Monte Carlo puro ni programación dinámica de Held--Karp \parencite{holland2017,held1962}.
+
+Las fuentes sitúan las rutas entre aproximadamente 120 y 160 paradas por conductor: se reportan unas 120 en una ruta típica, un rango de 140--160 y un promedio de 135 en otra fuente \parencite{clevenger2016,holland2017,ups2020}. El artículo de 2017 informa 55\,000 conductores en Estados Unidos; en 2020 UPS informó más de 66\,000 rutas en Estados Unidos, Canadá y Europa \parencite{holland2017,ups2020}. Los datos más recientes recogidos en la investigación corresponden a 2020--2021 \parencite{ups2020,leonard2021}.
+
+Con el depósito fijo, $n$ paradas admiten $n!$ órdenes posibles. La tabla~\ref{ej5-tab:fuerzabruta} compara esa cantidad con el ejemplo académico de cinco ciudades (cuatro paradas más el depósito). Los tiempos son cálculos ilustrativos suponiendo $10^9$ evaluaciones por segundo, no mediciones de ORION.
+
+\begin{table}[H]
+\centering\small
+\caption{Crecimiento de las secuencias posibles de una ruta}
+\label{ej5-tab:fuerzabruta}
+\begin{tabular}{@{}r r r@{}}
+\toprule
+Paradas $n$ & Secuencias $n!$ & Tiempo a $10^9$ secuencias/s \\
+\midrule
+4 (ejemplo de 5 ciudades) & 24 & Instantáneo \\
+10 & $3{,}6\times10^6$ & 3,6 ms \\
+20 & $2{,}4\times10^{18}$ & $\approx 77$ años \\
+120 & $6{,}7\times10^{198}$ & $\approx 10^{182}$ años \\
+135 & $2{,}7\times10^{230}$ & $\approx 10^{214}$ años \\
+150 & $5{,}7\times10^{262}$ & $\approx 10^{246}$ años \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.58\textwidth]{../img/driver_orion.png}
+	\caption{Comparación de la ruta del conductor y la de ORION; esta última visita dos áreas una sola vez y evita 30 millas (Holland et al., 2017).}
+	\label{ej5-fig:comparacion}
+\end{figure}
+
+\subsubsection{Resultados y alcance}
+UPS atribuye a ORION ahorros anuales de aproximadamente 100 millones de millas recorridas y 10 millones de galones de combustible; la investigación también recoge una proyección cercana a 100\,000 toneladas métricas de CO$_2$ y entre 300 y 400 millones de dólares de ahorro económico anual \parencite{holland2017,ups2015,ups2020}. Son cifras proyectadas o reportadas por UPS, no verificadas de forma independiente en este informe \parencite{holland2017}.
 
 \section{Cuestionario}
-\begin{itemize}
-	\item ¿Cuál es la diferencia entre un problema de clase P y uno de clase NP?
-	\item ¿Por qué se dice que el TSP es un problema NP-difícil?
-	\item ¿Qué ventaja y qué desventaja principal tiene la búsqueda aleatoria (Monte Carlo) frente a la fuerza bruta?
-	\item Si se aumenta el número de iteraciones de Monte Carlo, ¿qué se puede afirmar y qué NO se puede afirmar sobre la calidad de la solución encontrada?
-	\item ¿Por qué la búsqueda aleatoria se considera solo un ``primer intento'' y no una solución definitiva para problemas NP-difíciles?
+\begin{enumerate}
+    \item \textbf{¿Cuál es la diferencia entre un problema de clase P y uno de clase NP?} En P están los problemas que pueden resolverse en tiempo polinómico. En NP, una solución propuesta puede comprobarse en ese tiempo. Por ejemplo, dado un recorrido, se puede verificar rápidamente que visita las ciudades requeridas y calcular su costo, aunque encontrar el recorrido óptimo pueda ser muy difícil. Se sabe que $\mathrm{P}\subseteq\mathrm{NP}$, pero todavía no se sabe si ambas clases son iguales.
+
+    \item \textbf{¿Por qué se dice que el TSP es un problema NP-difícil?} Porque al aumentar las ciudades, el número de rutas posibles crece factorialmente. En el laboratorio, con 10 ciudades ya se evaluaron 181\,440 rutas distintas; para cientos de paradas, revisar todas las permutaciones deja de ser práctico. La versión de decisión del TSP es NP-completa y su versión de optimización es NP-difícil \parencite{garey1979}.
+
+    \item \textbf{¿Qué ventaja y qué desventaja principal tiene Monte Carlo frente a fuerza bruta?} Monte Carlo prueba rutas al azar y puede encontrar rápidamente una solución razonable sin recorrer todo el espacio. A cambio, no garantiza encontrar el óptimo: el resultado depende de qué alternativas salgan en los intentos y puede variar entre corridas. La fuerza bruta tarda más al crecer el problema, pero sí certifica el óptimo cuando alcanza a revisar todas las opciones.
+
+    \item \textbf{Si aumentan las iteraciones de Monte Carlo, ¿qué se puede afirmar sobre la calidad?} En una misma corrida, si se conserva siempre la mejor ruta encontrada, la calidad de ese mejor resultado no empeora y suele mejorar al probar más alternativas. También aumenta la posibilidad de acercarse al óptimo. Sin embargo, más iteraciones no garantizan encontrarlo ni permiten afirmar que una corrida independiente será mejor que otra.
+
+    \item \textbf{¿Por qué Monte Carlo es solo un primer intento ante problemas NP-difíciles?} Porque selecciona alternativas al azar y no aprovecha por sí solo la estructura del problema; en espacios enormes, la probabilidad de probar justo una ruta óptima puede ser muy baja. Para obtener mejores resultados prácticos se usan heurísticas que guían y mejoran la búsqueda. El caso ORION ilustra esto: combina técnicas de optimización adaptadas a sus restricciones, y no está documentado como una búsqueda Monte Carlo pura.
 \end{itemize}
 
 \section{Conclusiones}
-% Pendiente de completar.
+Los ejercicios muestran que no existe un único método adecuado para todos los tamaños. La fuerza bruta de los primeros ejemplos da una respuesta óptima y comprobable, pero el número de casos crece muy rápido. Monte Carlo reduce el trabajo al probar solo algunas rutas: en el TSP y en la asignación de tareas puede encontrar buenas soluciones con rapidez, aunque no asegura el óptimo.
 
-	%\begin{itemize}	
-	%	\item Se creo el archivo \textbf{.gitignore} para no considerar los archivos %\textbf{*.class} que son innecesarios hacer seguimiento.
-	%\end{itemize}
-	%\begin{lstlisting}[language=bash]
-	%	$ vim lab01/.gitignore
-	%\end{lstlisting}
-	%\begin{lstlisting}[language=bash]
-	%	*.class
-	%\end{lstlisting}
-	%\begin{lstlisting}[language=bash]
-	%	$ git add .
-	%	$ git commit -m "Creando .gitignore para archivos *.class"			
-	%	$ git push -u origin main
-	%\end{lstlisting}
-	
-	%\begin{lstlisting}[language=bash]
-	%	$ vim lab01/Insertion.java
-	%\end{lstlisting}
-	
-    
-%\clearpage
-%\bibliographystyle{apalike}
-%\bibliographystyle{IEEEtranN}
-%\bibliography{bibliography}
+La comparación por fuerza bruta del ejercicio de producción permitió confirmar el resultado aleatorio porque solo había 64 asignaciones. En cambio, la tabla de crecimiento y el caso de UPS ORION muestran por qué esa estrategia no se traslada a problemas grandes: una ruta real puede incluir entre 120 y 160 paradas, además de horarios, tráfico y criterios de seguridad. Allí se necesitan heurísticas que aprovechen la estructura del problema y produzcan rutas útiles dentro del tiempo disponible.
+
+En conjunto, el laboratorio evidencia el equilibrio central del diseño de algoritmos: los métodos exactos ofrecen garantía cuando el espacio es pequeño; los heurísticos sacrifican esa garantía para abordar instancias grandes. También enseña que modelar un caso real requiere incluir restricciones prácticas que no aparecen en la versión académica más simple del problema.
+\printbibliography[title={Referencias}]
 			
 \end{document}\noindent\textbf{Enunciado:}

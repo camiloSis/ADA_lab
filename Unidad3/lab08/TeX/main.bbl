@@ -1,0 +1,447 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global/global}
+    \entry{clevenger2016}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=1cc54326406568e9c7bfb392a79a0d6d}{%
+           family={Clevenger},
+           familyi={C\bibinitperiod},
+           given={Seth},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Transport Topics}%
+      }
+      \strng{namehash}{1cc54326406568e9c7bfb392a79a0d6d}
+      \strng{fullhash}{1cc54326406568e9c7bfb392a79a0d6d}
+      \strng{fullhashraw}{1cc54326406568e9c7bfb392a79a0d6d}
+      \strng{bibnamehash}{1cc54326406568e9c7bfb392a79a0d6d}
+      \strng{authorbibnamehash}{1cc54326406568e9c7bfb392a79a0d6d}
+      \strng{authornamehash}{1cc54326406568e9c7bfb392a79a0d6d}
+      \strng{authorfullhash}{1cc54326406568e9c7bfb392a79a0d6d}
+      \strng{authorfullhashraw}{1cc54326406568e9c7bfb392a79a0d6d}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{9}
+      \field{langid}{english}
+      \field{month}{8}
+      \field{title}{{UPS} Routing Program {ORION} Helps Drivers Trim Miles, Reduce Costs}
+      \field{year}{2016}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.ttnews.com/articles/ups-routing-program-orion-helps-drivers-trim-miles-reduce-costs
+      \endverb
+      \verb{url}
+      \verb https://www.ttnews.com/articles/ups-routing-program-orion-helps-drivers-trim-miles-reduce-costs
+      \endverb
+    \endentry
+    \entry{held1962}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=7270cd7f9e9b61fa9da8f48cc795cd39}{%
+           family={Held},
+           familyi={H\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5290385c419686f6312edeb3578dc9cf}{%
+           family={Karp},
+           familyi={K\bibinitperiod},
+           given={Richard\bibnamedelima M.},
+           giveni={R\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{fullhash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{fullhashraw}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{bibnamehash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{authorbibnamehash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{authornamehash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{authorfullhash}{b66ac2ce1dd288a9211b490f708575bb}
+      \strng{authorfullhashraw}{b66ac2ce1dd288a9211b490f708575bb}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of the Society for Industrial and Applied Mathematics}
+      \field{langid}{english}
+      \field{number}{1}
+      \field{title}{A Dynamic Programming Approach to Sequencing Problems}
+      \field{volume}{10}
+      \field{year}{1962}
+      \field{pages}{196\bibrangedash 210}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1137/0110015
+      \endverb
+    \endentry
+    \entry{holland2017}{article}{}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=19077fe816f07d95d71e732891e32e86}{%
+           family={Holland},
+           familyi={H\bibinitperiod},
+           given={Chuck},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=976fb96e533f0f2b6d0ff288b45a2ddf}{%
+           family={Levis},
+           familyi={L\bibinitperiod},
+           given={Jack},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4750bfafd91b2fa5e5e41f96fcc508b7}{%
+           family={Nuggehalli},
+           familyi={N\bibinitperiod},
+           given={Ranganath},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=57d6ddb3f0eec7a04a3e42aa5d978399}{%
+           family={Santilli},
+           familyi={S\bibinitperiod},
+           given={Bob},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9c09a6811c800572b88f419793a2cbac}{%
+           family={Winters},
+           familyi={W\bibinitperiod},
+           given={Jeff},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{663f4cad678996a02d94fdd1da136dad}
+      \strng{fullhash}{c987a52eeb9101b03f2beb5181bb571c}
+      \strng{fullhashraw}{c987a52eeb9101b03f2beb5181bb571c}
+      \strng{bibnamehash}{663f4cad678996a02d94fdd1da136dad}
+      \strng{authorbibnamehash}{663f4cad678996a02d94fdd1da136dad}
+      \strng{authornamehash}{663f4cad678996a02d94fdd1da136dad}
+      \strng{authorfullhash}{c987a52eeb9101b03f2beb5181bb571c}
+      \strng{authorfullhashraw}{c987a52eeb9101b03f2beb5181bb571c}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Interfaces}
+      \field{langid}{english}
+      \field{number}{1}
+      \field{title}{{UPS} Optimizes Delivery Routes}
+      \field{volume}{47}
+      \field{year}{2017}
+      \field{pages}{8\bibrangedash 23}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1287/inte.2016.0875
+      \endverb
+    \endentry
+    \entry{ingber1993}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e319c89013fa2d89c7090b39c60cf464}{%
+           family={Ingber},
+           familyi={I\bibinitperiod},
+           given={Lester},
+           giveni={L\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e319c89013fa2d89c7090b39c60cf464}
+      \strng{fullhash}{e319c89013fa2d89c7090b39c60cf464}
+      \strng{fullhashraw}{e319c89013fa2d89c7090b39c60cf464}
+      \strng{bibnamehash}{e319c89013fa2d89c7090b39c60cf464}
+      \strng{authorbibnamehash}{e319c89013fa2d89c7090b39c60cf464}
+      \strng{authornamehash}{e319c89013fa2d89c7090b39c60cf464}
+      \strng{authorfullhash}{e319c89013fa2d89c7090b39c60cf464}
+      \strng{authorfullhashraw}{e319c89013fa2d89c7090b39c60cf464}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Mathematical and Computer Modelling}
+      \field{langid}{english}
+      \field{number}{11}
+      \field{title}{Simulated Annealing: Practice versus Theory}
+      \field{volume}{18}
+      \field{year}{1993}
+      \field{pages}{29\bibrangedash 57}
+      \range{pages}{29}
+      \verb{doi}
+      \verb 10.1016/0895-7177(93)90204-C
+      \endverb
+    \endentry
+    \entry{lemarechal2001}{incollection}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=fac596b6119fb105e6a44ab55a7f31d1}{%
+           family={Lemaréchal},
+           familyi={L\bibinitperiod},
+           given={Claude},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+      }
+      \name{editor}{2}{}{%
+        {{hash=01169310249847156f664ba0d45a28d2}{%
+           family={Jünger},
+           familyi={J\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b124ab9b7bf97ce2d7bddf44a6cd32a0}{%
+           family={Naddef},
+           familyi={N\bibinitperiod},
+           given={Denis},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{fac596b6119fb105e6a44ab55a7f31d1}
+      \strng{fullhash}{fac596b6119fb105e6a44ab55a7f31d1}
+      \strng{fullhashraw}{fac596b6119fb105e6a44ab55a7f31d1}
+      \strng{bibnamehash}{fac596b6119fb105e6a44ab55a7f31d1}
+      \strng{authorbibnamehash}{fac596b6119fb105e6a44ab55a7f31d1}
+      \strng{authornamehash}{fac596b6119fb105e6a44ab55a7f31d1}
+      \strng{authorfullhash}{fac596b6119fb105e6a44ab55a7f31d1}
+      \strng{authorfullhashraw}{fac596b6119fb105e6a44ab55a7f31d1}
+      \strng{editorbibnamehash}{2c60fe9b4f6cd245232e84c587e3eb81}
+      \strng{editornamehash}{2c60fe9b4f6cd245232e84c587e3eb81}
+      \strng{editorfullhash}{2c60fe9b4f6cd245232e84c587e3eb81}
+      \strng{editorfullhashraw}{2c60fe9b4f6cd245232e84c587e3eb81}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Computational Combinatorial Optimization: Optimal or Provably Near-Optimal Solutions}
+      \field{langid}{english}
+      \field{series}{Lecture Notes in Computer Science}
+      \field{title}{Lagrangian Relaxation}
+      \field{volume}{2241}
+      \field{year}{2001}
+      \field{pages}{112\bibrangedash 156}
+      \range{pages}{45}
+      \verb{doi}
+      \verb 10.1007/3-540-45586-8_4
+      \endverb
+    \endentry
+    \entry{leonard2021}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=12e9afde19c5c7d0e809467d6fcc2698}{%
+           family={Leonard},
+           familyi={L\bibinitperiod},
+           given={Matt},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{organization}{1}{%
+        {Supply Chain Dive}%
+      }
+      \strng{namehash}{12e9afde19c5c7d0e809467d6fcc2698}
+      \strng{fullhash}{12e9afde19c5c7d0e809467d6fcc2698}
+      \strng{fullhashraw}{12e9afde19c5c7d0e809467d6fcc2698}
+      \strng{bibnamehash}{12e9afde19c5c7d0e809467d6fcc2698}
+      \strng{authorbibnamehash}{12e9afde19c5c7d0e809467d6fcc2698}
+      \strng{authornamehash}{12e9afde19c5c7d0e809467d6fcc2698}
+      \strng{authorfullhash}{12e9afde19c5c7d0e809467d6fcc2698}
+      \strng{authorfullhashraw}{12e9afde19c5c7d0e809467d6fcc2698}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{11}
+      \field{langid}{english}
+      \field{month}{6}
+      \field{title}{{UPS} adds dynamic routing to {ORION}, saving 2-4 miles per driver}
+      \field{year}{2021}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.supplychaindive.com/news/ups-orion-route-planning-analytics-data-logistics/601673/
+      \endverb
+      \verb{url}
+      \verb https://www.supplychaindive.com/news/ups-orion-route-planning-analytics-data-logistics/601673/
+      \endverb
+    \endentry
+    \entry{lin1973}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=ee5ad1086dab61efed0851b6802d25e4}{%
+           family={Lin},
+           familyi={L\bibinitperiod},
+           given={Shen},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cef3a18f3097ba31cc4cf18c95bfdfbc}{%
+           family={Kernighan},
+           familyi={K\bibinitperiod},
+           given={Brian\bibnamedelima W.},
+           giveni={B\bibinitperiod\bibinitdelim W\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{ca68ba4e55832da4e80ef54bff1e170d}
+      \strng{fullhash}{ca68ba4e55832da4e80ef54bff1e170d}
+      \strng{fullhashraw}{ca68ba4e55832da4e80ef54bff1e170d}
+      \strng{bibnamehash}{ca68ba4e55832da4e80ef54bff1e170d}
+      \strng{authorbibnamehash}{ca68ba4e55832da4e80ef54bff1e170d}
+      \strng{authornamehash}{ca68ba4e55832da4e80ef54bff1e170d}
+      \strng{authorfullhash}{ca68ba4e55832da4e80ef54bff1e170d}
+      \strng{authorfullhashraw}{ca68ba4e55832da4e80ef54bff1e170d}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Operations Research}
+      \field{langid}{english}
+      \field{number}{2}
+      \field{title}{An Effective Heuristic Algorithm for the Traveling-Salesman Problem}
+      \field{volume}{21}
+      \field{year}{1973}
+      \field{pages}{498\bibrangedash 516}
+      \range{pages}{19}
+      \verb{doi}
+      \verb 10.1287/opre.21.2.498
+      \endverb
+    \endentry
+    \entry{ropke2006}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=2938a57825fdb9a5a7f8c36d8fa2e37d}{%
+           family={Ropke},
+           familyi={R\bibinitperiod},
+           given={Stefan},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=27c28bde78e62d4964a22364b7887154}{%
+           family={Pisinger},
+           familyi={P\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{bf6eea1429c09bce918c080db50a7824}
+      \strng{fullhash}{bf6eea1429c09bce918c080db50a7824}
+      \strng{fullhashraw}{bf6eea1429c09bce918c080db50a7824}
+      \strng{bibnamehash}{bf6eea1429c09bce918c080db50a7824}
+      \strng{authorbibnamehash}{bf6eea1429c09bce918c080db50a7824}
+      \strng{authornamehash}{bf6eea1429c09bce918c080db50a7824}
+      \strng{authorfullhash}{bf6eea1429c09bce918c080db50a7824}
+      \strng{authorfullhashraw}{bf6eea1429c09bce918c080db50a7824}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Transportation Science}
+      \field{langid}{english}
+      \field{number}{4}
+      \field{title}{An Adaptive Large Neighborhood Search Heuristic for the Pickup and Delivery Problem with Time Windows}
+      \field{volume}{40}
+      \field{year}{2006}
+      \field{pages}{455\bibrangedash 472}
+      \range{pages}{18}
+      \verb{doi}
+      \verb 10.1287/trsc.1050.0135
+      \endverb
+    \endentry
+    \entry{ups2015}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0e60ac85bc39f1e221d66a048ff164da}{%
+           family={{UPS}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{fullhash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{fullhashraw}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{bibnamehash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{authorbibnamehash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{authornamehash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{authorfullhash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{authorfullhashraw}{0e60ac85bc39f1e221d66a048ff164da}
+      \field{extraname}{1}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{3}
+      \field{langid}{english}
+      \field{month}{3}
+      \field{title}{{UPS} Accelerates Use of Routing Optimization Software to Reduce 100 Million Miles Driven}
+      \field{titleaddon}{Comunicado de prensa}
+      \field{year}{2015}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://www.globenewswire.com/de/news-release/2015/03/02/711508/30428/en/UPS-Accelerates-Use-of-Routing-Optimization-Software-to-Reduce-100-Million-Miles-Driven.html
+      \endverb
+      \verb{url}
+      \verb https://www.globenewswire.com/de/news-release/2015/03/02/711508/30428/en/UPS-Accelerates-Use-of-Routing-Optimization-Software-to-Reduce-100-Million-Miles-Driven.html
+      \endverb
+    \endentry
+    \entry{ups2020}{online}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0e60ac85bc39f1e221d66a048ff164da}{%
+           family={{UPS}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{fullhash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{fullhashraw}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{bibnamehash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{authorbibnamehash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{authornamehash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{authorfullhash}{0e60ac85bc39f1e221d66a048ff164da}
+      \strng{authorfullhashraw}{0e60ac85bc39f1e221d66a048ff164da}
+      \field{extraname}{2}
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{day}{29}
+      \field{langid}{english}
+      \field{month}{1}
+      \field{title}{{UPS} To Enhance {ORION} With Continuous Delivery Route Optimization}
+      \field{titleaddon}{Comunicado de prensa}
+      \field{year}{2020}
+      \field{dateera}{ce}
+      \verb{urlraw}
+      \verb https://about.ups.com/ae/en/newsroom/press-releases/innovation-driven/ups-to-enhance-orion-with-continuous-delivery-route-optimization.html
+      \endverb
+      \verb{url}
+      \verb https://about.ups.com/ae/en/newsroom/press-releases/innovation-driven/ups-to-enhance-orion-with-continuous-delivery-route-optimization.html
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
