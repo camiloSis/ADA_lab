@@ -41,7 +41,7 @@
 \newcommand{\itemSchool}{Escuela Profesional de Ingeniería de Sistemas}
 \newcommand{\itemAcademic}{2026 - B}
 \newcommand{\itemInput}{05/11/2026}
-\newcommand{\itemOutput}{--/11/2026}
+\newcommand{\itemOutput}{09/11/2026}
 \newcommand{\itemPracticeNumber}{08}
 \newcommand{\itemTheme}{Métodos Heurísticos: Problemas NP y Búsqueda Aleatoria (Monte Carlo)}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -154,7 +154,7 @@ Implementa fuerza bruta para un TSP de 10 ciudades generadas aleatoriamente, y m
 \inputminted{cpp}{../e-n/e1.cpp}
 
 \begin{itemize}
-    \item /relleno
+    \item Genera 10 ciudades con coordenadas reproducibles, calcula sus distancias y evalúa rutas que empiezan y terminan en la ciudad 0. Como la distancia es simétrica, una ruta y su recorrido inverso cuestan lo mismo; por eso descarta una de cada pareja. Al final informa la ruta más corta, su costo y el tiempo empleado. En esencia, busca la mejor ruta examinando todas las alternativas posibles.
 \end{itemize}
 
 \begin{figure}[H]
@@ -169,7 +169,7 @@ Implementa búsqueda aleatoria (Monte Carlo) para el mismo TSP de 10 ciudades de
 \inputminted{cpp}{../e-n/e2.cpp}
 
 \begin{itemize}
-    \item /relleno
+    \item Primero calcula el óptimo exacto para tener una referencia. Después mezcla las ciudades al azar y conserva la ruta de menor costo en cada corrida. Repite el experimento con distintas cantidades de intentos y resume los resultados con el mejor, peor y promedio, además de cuántas veces encontró el óptimo. Más intentos suelen mejorar la respuesta, pero el azar no garantiza acertar.
 \end{itemize}
 
 \begin{figure}[H]
@@ -184,7 +184,7 @@ Modela una versión simplificada del problema de programación de líneas de pro
 \inputminted{cpp}{../e-n/e3.cpp}
 
 \begin{itemize}
-    \item /relleno
+    \item Cada asignación indica a qué línea va cada tarea. La función makespan suma las horas de cada línea y toma la carga mayor: esa línea determina cuándo termina todo el trabajo. El programa prueba asignaciones aleatorias y conserva la mejor; luego revisa las 64 posibilidades mediante fuerza bruta para confirmar el óptimo. La intuición es repartir el trabajo para que una línea no quede mucho más cargada que la otra.
 \end{itemize}
 
 \begin{figure}[H]
@@ -199,7 +199,9 @@ Genera la gráfica de crecimiento del espacio de soluciones (como la Figura 3) p
 \inputminted{cpp}{../e-n/e4.cpp}
 
 \begin{itemize}
-    \item /relleno
+	\item El programa compara cuántas alternativas se deben revisar en dos problemas: para el TSP calcula $(n-1)!/2$, pues fija una ciudad de inicio y considera equivalentes una ruta y su recorrido inverso; para el ordenamiento de tareas usa $n!$. Calcula los factoriales de forma acumulativa y muestra los resultados en una tabla junto con el cociente entre ambas cantidades.
+	\item Para visualizar el crecimiento, guarda en vectores los logaritmos decimales de cada cantidad y genera el archivo \texttt{crecimiento.svg}. La escala logarítmica permite mostrar números muy grandes en una gráfica legible: cada salto vertical representa un aumento por potencias de diez. Así se observa que ambos espacios crecen rápidamente y que enumerar todas las opciones se vuelve costoso al aumentar $n$.
+	\item La fórmula $n!$ corresponde al modelo de permutar tareas indicado en la consigna. Si se tratara de asignar cada tarea a una de dos líneas, el número de asignaciones sería $2^n$, no $n!$.
 \end{itemize}
 
 \begin{figure}[H]
@@ -208,6 +210,14 @@ Genera la gráfica de crecimiento del espacio de soluciones (como la Figura 3) p
     \caption{Ejecución del ejercicio 4}
     \label{fig:e4}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../e-n/crecimiento.svg}
+    \caption{Gráfica de crecimiento del espacio de soluciones para TSP y asignación de tareas}
+    \label{fig:crecimiento}
+\end{figure}
+
 
 \subsection{Ejercicio 5}
 Investiga y documenta un caso real donde se use el TSP o un problema de programación de líneas de producción (logística de reparto, planificación de manufactura, diseño de circuitos), indicando aproximadamente cuántas ciudades o tareas maneja en la práctica.
