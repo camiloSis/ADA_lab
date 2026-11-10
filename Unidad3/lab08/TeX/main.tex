@@ -303,7 +303,7 @@ UPS atribuye a ORION ahorros anuales de aproximadamente 100 millones de millas r
     \item \textbf{Si aumentan las iteraciones de Monte Carlo, ¿qué se puede afirmar sobre la calidad?} En una misma corrida, si se conserva siempre la mejor ruta encontrada, la calidad de ese mejor resultado no empeora y suele mejorar al probar más alternativas. También aumenta la posibilidad de acercarse al óptimo. Sin embargo, más iteraciones no garantizan encontrarlo ni permiten afirmar que una corrida independiente será mejor que otra.
 
     \item \textbf{¿Por qué Monte Carlo es solo un primer intento ante problemas NP-difíciles?} Porque selecciona alternativas al azar y no aprovecha por sí solo la estructura del problema; en espacios enormes, la probabilidad de probar justo una ruta óptima puede ser muy baja. Para obtener mejores resultados prácticos se usan heurísticas que guían y mejoran la búsqueda. El caso ORION ilustra esto: combina técnicas de optimización adaptadas a sus restricciones, y no está documentado como una búsqueda Monte Carlo pura.
-\end{itemize}
+\end{enumerate}
 
 \section{Conclusiones}
 Los ejercicios muestran que no existe un único método adecuado para todos los tamaños. La fuerza bruta de los primeros ejemplos da una respuesta óptima y comprobable, pero el número de casos crece muy rápido. Monte Carlo reduce el trabajo al probar solo algunas rutas: en el TSP y en la asignación de tareas puede encontrar buenas soluciones con rapidez, aunque no asegura el óptimo.

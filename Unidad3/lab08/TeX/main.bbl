@@ -58,6 +58,46 @@
       \verb https://www.ttnews.com/articles/ups-routing-program-orion-helps-drivers-trim-miles-reduce-costs
       \endverb
     \endentry
+    \entry{garey1979}{book}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=3d981c215c9c575d31bcca98c6d6c69d}{%
+           family={Garey},
+           familyi={G\bibinitperiod},
+           given={Michael\bibnamedelima R.},
+           giveni={M\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=8f805225d8e433c29a18a566d1f6acc6}{%
+           family={Johnson},
+           familyi={J\bibinitperiod},
+           given={David\bibnamedelima S.},
+           giveni={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {San Francisco, CA}%
+      }
+      \list{publisher}{1}{%
+        {W. H. Freeman}%
+      }
+      \strng{namehash}{d186cd4f1f5ca75183b09d5af68f9e7c}
+      \strng{fullhash}{d186cd4f1f5ca75183b09d5af68f9e7c}
+      \strng{fullhashraw}{d186cd4f1f5ca75183b09d5af68f9e7c}
+      \strng{bibnamehash}{d186cd4f1f5ca75183b09d5af68f9e7c}
+      \strng{authorbibnamehash}{d186cd4f1f5ca75183b09d5af68f9e7c}
+      \strng{authornamehash}{d186cd4f1f5ca75183b09d5af68f9e7c}
+      \strng{authorfullhash}{d186cd4f1f5ca75183b09d5af68f9e7c}
+      \strng{authorfullhashraw}{d186cd4f1f5ca75183b09d5af68f9e7c}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0-7167-1045-5}
+      \field{langid}{english}
+      \field{title}{Computers and Intractability: A Guide to the Theory of {NP}-Completeness}
+      \field{year}{1979}
+    \endentry
     \entry{held1962}{article}{}{}
       \name{author}{2}{}{%
         {{un=0,uniquepart=base,hash=7270cd7f9e9b61fa9da8f48cc795cd39}{%
