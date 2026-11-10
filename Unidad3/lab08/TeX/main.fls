@@ -2,7 +2,7 @@ PWD /home/camiloasd/Documentos/VS/Laboratorio-ADA/Unidad3/lab08/TeX
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/camiloasd/Documentos/VS/Laboratorio-ADA/Unidad3/lab08/TeX/main.tex
+INPUT main.tex
 OUTPUT main.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -97,6 +97,17 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+INPUT /usr/share/texlive/texmf-dist/tex/generic/catchfile/catchfile.sty
+INPUT /usr/share/texlive/texmf-dist/tex/generic/catchfile/catchfile.sty
+INPUT /usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
+INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
+INPUT ./main.w18
+INPUT ./main.w18
+INPUT main.w18
 INPUT /usr/share/texlive/texmf-dist/tex/latex/transparent/transparent.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/transparent/transparent.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/transparent/transparent-nometadata.sty
@@ -131,10 +142,6 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.c
 INPUT /usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
 INPUT /usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty
-INPUT /usr/share/texlive/texmf-dist/tex/generic/catchfile/catchfile.sty
-INPUT /usr/share/texlive/texmf-dist/tex/generic/catchfile/catchfile.sty
-INPUT /usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
-INPUT /usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fvextra/fvextra.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fvextra/fvextra.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
@@ -278,6 +285,7 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
+INPUT 'inkscape' -V 
 INPUT /usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/spanish.lbx
 INPUT /usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/spanish.lbx
 INPUT /usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/spanish.lbx
@@ -482,6 +490,13 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 INPUT /usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/latex-fonts/lasy10.tfm
+INPUT ../img/logo_episunsa.png
+INPUT ../img/logo_episunsa.png
+INPUT ../img/logo_episunsa.png
+INPUT ../img/logo_episunsa.png
+INPUT ../img/logo_abet.png
+INPUT ../img/logo_abet.png
+INPUT ../img/logo_abet.png
 INPUT ../img/logo_episunsa.png
 INPUT ../img/logo_episunsa.png
 INPUT ../img/logo_episunsa.png

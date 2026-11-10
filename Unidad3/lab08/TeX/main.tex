@@ -52,6 +52,7 @@
 \usepackage[backend=biber,style=authoryear]{biblatex}
 \addbibresource{referencias.bib}
 \usepackage{hyperref}
+\hypersetup{hidelinks}
 \AtBeginDocument{\selectlanguage{spanish}}
 \renewcommand{\figurename}{Figura}
 \renewcommand{\refname}{Referencias}
@@ -294,7 +295,7 @@ UPS atribuye a ORION ahorros anuales de aproximadamente 100 millones de millas r
 
 \section{Cuestionario}
 \begin{enumerate}
-    \item \textbf{¿Cuál es la diferencia entre un problema de clase P y uno de clase NP?} En P están los problemas que pueden resolverse en tiempo polinómico. En NP, una solución propuesta puede comprobarse en ese tiempo. Por ejemplo, dado un recorrido, se puede verificar rápidamente que visita las ciudades requeridas y calcular su costo, aunque encontrar el recorrido óptimo pueda ser muy difícil. Se sabe que $\mathrm{P}\subseteq\mathrm{NP}$, pero todavía no se sabe si ambas clases son iguales.
+	\item \textbf{¿Cuál es la diferencia entre un problema de clase P y uno de clase NP?} En P están los problemas que pueden resolverse en tiempo polinómico. En NP, una solución propuesta puede comprobarse en ese tiempo. Por ejemplo, dado un recorrido, se puede verificar rápidamente que visita las ciudades requeridas y calcular su costo, aunque encontrar el recorrido óptimo pueda ser muy difícil. Se sabe que $\mathrm{P}\subseteq\mathrm{NP}$, pero todavía no se sabe si ambas clases son iguales.
 
     \item \textbf{¿Por qué se dice que el TSP es un problema NP-difícil?} Porque al aumentar las ciudades, el número de rutas posibles crece factorialmente. En el laboratorio, con 10 ciudades ya se evaluaron 181\,440 rutas distintas; para cientos de paradas, revisar todas las permutaciones deja de ser práctico. La versión de decisión del TSP es NP-completa y su versión de optimización es NP-difícil \parencite{garey1979}.
 

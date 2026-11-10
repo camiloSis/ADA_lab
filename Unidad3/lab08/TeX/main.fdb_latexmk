@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber main"] 0 "main.bcf" "main.bbl" "main" 1794285096.84458 -1
-  "main.bcf" 1794285096.69616 110030 e8f643e2f79c924344a1e1e472392663 "pdflatex"
+["biber main"] 0 "main.bcf" "main.bbl" "main" 1794285463.03084 -1
+  "main.bcf" 1794285462.91202 110030 e8f643e2f79c924344a1e1e472392663 "pdflatex"
   "referencias.bib" 1794284581.2027 4083 44d15228f0c2e8204c43744be8859852 ""
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1794285091.11322 "/home/camiloasd/Documentos/VS/Laboratorio-ADA/Unidad3/lab08/TeX/main.tex" "main.pdf" "main" 1794285096.84504 0
+["pdflatex"] 1794285459.22692 "main.tex" "main.pdf" "main" 1794285463.03124 0
   "../e-n/crecimiento.pdf" 1794281924.5912 19311 86356655c18c1652e4a6f2f31be16669 ""
   "../e-n/e1.cpp" 1793887536.72577 1551 b87e334afb90bc02379a95ef4ebfe805 ""
   "../e-n/e2.cpp" 1793887696.6506 2771 bad8abfabcb0493076fa549d513085a5 ""
@@ -20,7 +20,6 @@
   "../img/holland.png" 1794282993.42535 185869 2a300584f2efa494823e36b732566c1d ""
   "../img/logo_abet.png" 1790552468.78584 6307 66ff7f82180b3b29c348bdae974447b6 ""
   "../img/logo_episunsa.png" 1790552468.78667 6815 7da1fe7727dad63b523d0fbca337594d ""
-  "/home/camiloasd/Documentos/VS/Laboratorio-ADA/Unidad3/lab08/TeX/main.tex" 1794285093.77861 18057 7c38632e1231b0f59c4a58d9d4c79486 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -208,11 +207,11 @@
   "_minted/F247AC8E0E5E85B2B763CE9C29E6E92D.highlight.minted" 1793887774.43399 14570 71f713508f535e8807f2bdee2a144513 ""
   "_minted/_FAD58DE7366495DB4650CFEFAC2FCD61.index.minted" 1794283401.78114 433 7a35ba135958c8e656b4a7c3686893b8 ""
   "_minted/default.style.minted" 1793885422.31335 6426 e1fb43a91491f41b33310478eee48cdb ""
-  "main.aux" 1794285096.69116 7819 fecc2067297e56bc1b245b9ec7cd6cd8 "pdflatex"
-  "main.bbl" 1794284850.25922 18037 d31f2fc37c01201b1b6a1a7c29bccbff "biber main"
-  "main.out" 1794285096.69516 1604 2edbd9fff74e0af9934269321357d07d "pdflatex"
-  "main.run.xml" 1794285096.6984 2312 b209b7e4990dfc16356485ce40c1b36d "pdflatex"
-  "main.tex" 1794285093.77861 18057 7c38632e1231b0f59c4a58d9d4c79486 ""
+  "main.aux" 1794285462.90202 7934 05214fa8b068767b6b4558a305458660 "pdflatex"
+  "main.bbl" 1794285100.44893 19701 008bf821ecd9e3e85dd37b60d0c3af66 "biber main"
+  "main.out" 1794285462.91102 1604 2edbd9fff74e0af9934269321357d07d "pdflatex"
+  "main.run.xml" 1794285462.91516 2312 2b4bb592e2635d6e5d324f407234fce9 "pdflatex"
+  "main.tex" 1794285438.38263 18077 c8b8b0ed3013d996ac8dbe9ef78569f7 ""
   (generated)
   "main.aux"
   "main.bcf"
