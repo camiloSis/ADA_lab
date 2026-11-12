@@ -43,7 +43,7 @@
 \newcommand{\itemInput}{------}
 \newcommand{\itemOutput}{------}
 \newcommand{\itemPracticeNumber}{09}
-\newcommand{\itemTheme}{Práctica de laboratorio 09}
+\newcommand{\itemTheme}{Métodos Heurísticos: Heurísticas Constructivas y de Búsqueda Local.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -147,6 +147,37 @@
 		\end{tabular}
 	\end{table}
 	
+\section{Ejercicios propuestos por el docente}
+
+\subsection{Construcción de una ruta con Nearest Neighbor}
+Construir una ruta para el TSP de cinco ciudades del Laboratorio 8 usando la misma matriz de distancias. Aplicar Nearest Neighbor empezando en la ciudad 0 y comparar el costo obtenido con el óptimo conocido, que es 70.
+
+\inputminted{cpp}{../e-p/tsp_nearest_neighbor.cpp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../img/nn.png}
+    \caption{Ruta para el TSP de 5 ciudades.}
+    \label{fig:nn}
+\end{figure}
+
+La heurística comienza en la ciudad 0 y, en cada paso, elige la ciudad no visitada más cercana a la ciudad actual. Cuando todas las ciudades han sido visitadas, cierra el recorrido regresando al origen. El programa almacena las distancias en una matriz y usa un vector para marcar las ciudades visitadas y otro para construir la ruta. Para esta instancia obtiene la ruta 0--1--3--4--2--0, de costo 70.
+
+\subsection{Mejora de una ruta con búsqueda local 2-opt}
+
+Aplicar 2-opt a la ruta inicial 0--1--2--4--3--0, obtenida con Nearest Neighbor al empezar en la ciudad 2, cuyo costo es 85. Comparar la ruta mejorada con el óptimo conocido del TSP, de costo 70.
+
+\inputminted{cpp}{../e-p/tsp_2opt.cpp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../img/2opt.png}
+    \caption{Ruta mejorada con 2-opt.}
+    \label{fig:2-opt}
+\end{figure}
+
+El algoritmo parte de una ruta completa y prueba invertir segmentos entre distintas posiciones. Calcula el costo de cada ruta candidata y acepta una inversión solo cuando reduce estrictamente el costo. Repite las pruebas hasta que ninguna inversión produzca una mejora. En este ejemplo invierte un segmento y obtiene la ruta 0--1--3--4--2--0, reduciendo el costo de 85 a 70.
+
 \section{Ejercicios/Problemas propuestos}
 
 \subsection{Ejercicio 1}
