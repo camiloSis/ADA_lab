@@ -1,8 +1,6 @@
-// Ejercicio 3: Inserción más barata (cheapest insertion) vs Nearest Neighbor.
-// Ambas se ejecutan desde cada origen sobre las mismas 15 ciudades de los ejercicios 1 y 2.
 #include "tsp.h"
 
-// Tiempo medio (ms) de ejecutar la heurística desde los N orígenes; se repite porque una sola corrida dura casi 0.
+// Tiempo medio de ejecutar la heurística desde los N orígenes; se repite porque una sola corrida dura casi 0.
 template <class F> double tiempoMs(F heuristica, const Mat& d, int reps = 2000) {
     auto t0 = chrono::steady_clock::now();
     double sumidero = 0;  // evita que el compilador elimine las llamadas

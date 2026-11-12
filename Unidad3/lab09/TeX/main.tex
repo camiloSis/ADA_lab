@@ -40,8 +40,8 @@
 \newcommand{\itemDepartment}{Departamento Académico de Ingeniería de Sistemas e Informática}
 \newcommand{\itemSchool}{Escuela Profesional de Ingeniería de Sistemas}
 \newcommand{\itemAcademic}{2026 - B}
-\newcommand{\itemInput}{------}
-\newcommand{\itemOutput}{------}
+\newcommand{\itemInput}{12/11/2026}
+\newcommand{\itemOutput}{--/11/2026}
 \newcommand{\itemPracticeNumber}{09}
 \newcommand{\itemTheme}{Métodos Heurísticos: Heurísticas Constructivas y de Búsqueda Local.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -80,7 +80,6 @@
 \setminted{%
   fontsize=\small,
   breaklines,
-  breakanywhere,
   linenos,
   numbersep=6pt,
   frame=lines,
@@ -179,6 +178,10 @@ Aplicar 2-opt a la ruta inicial 0--1--2--4--3--0, obtenida con Nearest Neighbor 
 El algoritmo parte de una ruta completa y prueba invertir segmentos entre distintas posiciones. Calcula el costo de cada ruta candidata y acepta una inversión solo cuando reduce estrictamente el costo. Repite las pruebas hasta que ninguna inversión produzca una mejora. En este ejemplo invierte un segmento y obtiene la ruta 0--1--3--4--2--0, reduciendo el costo de 85 a 70.
 
 \section{Ejercicios/Problemas propuestos}
+
+\subsection{Header compartido: tsp.h}
+Reúne tipos, datos y funciones comunes para todos los ejercicios, se incorporan en estos mediante \texttt{\#include "tsp.h"}. Calcula costos y aplica las heurísticas Nearest Neighbor y 2-opt. Contiene también funciones para generar instancias aleatorias de TSP y para medir tiempos de ejecución.
+\inputminted{cpp}{../e-n/tsp.h}
 
 \subsection{Ejercicio 1}
 Implementa Nearest Neighbor para un TSP de 15 ciudades generadas aleatoriamente, y ejecútalo partiendo de cada una de las 15 ciudades como origen. ¿El resultado cambia según el punto de partida?

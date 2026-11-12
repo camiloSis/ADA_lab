@@ -1,5 +1,3 @@
-// Ejercicio 2: 2-opt sobre las 15 soluciones de Nearest Neighbor (Ejercicio 1).
-// Pregunta: ¿el mejor resultado final sigue dependiendo de la ciudad de origen?
 #include "tsp.h"
 
 int main() {
