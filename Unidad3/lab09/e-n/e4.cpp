@@ -31,6 +31,5 @@ int main() {
         double segBF = rutas * spr;
         printf("%-5d %12.3f %14.4f %14.2e %14.2e %14.2e %12.2e\n", n, c, msH, spr, rutas, segBF / SEG_ANIO, segBF / (msH / 1000));
     }
-    printf("\nPara comparar: la edad del universo es ~%.2e años.\n", EDAD_UNIVERSO);
     printf("(BF = fuerza bruta, estimada: tiempo medido por ruta x número de rutas; no se ejecutó.)\n");
 }

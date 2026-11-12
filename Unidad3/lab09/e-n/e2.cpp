@@ -21,6 +21,4 @@ int main() {
     printf("\nDispersión (peor vs mejor): NN %.2f%% -> NN + 2-opt %.2f%%\n",
            100 * (a.peor - a.mejor) / a.mejor, 100 * (d.peor - d.mejor) / d.mejor);
     printf("Origen del mejor: NN = %d, NN + 2-opt = %d\n", a.idxMejor, d.idxMejor);
-    printf("¿El resultado final depende del origen? %s (%d costos distintos; el mejor se alcanza desde %d de %d orígenes)\n",
-           d.distintos > 1 ? "SÍ" : "NO", d.distintos, d.enMejor, N);
 }
