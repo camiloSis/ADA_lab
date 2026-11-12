@@ -150,7 +150,7 @@
 \section{Ejercicios/Problemas propuestos}
 
 \subsection{Ejercicio 1}
-/relleno
+Implementa Nearest Neighbor para un TSP de 15 ciudades generadas aleatoriamente, y ejecútalo partiendo de cada una de las 15 ciudades como origen. ¿El resultado cambia según el punto de partida?
 \inputminted{cpp}{../e-n/e1.cpp}
 
 \begin{itemize}
@@ -165,7 +165,7 @@
 \end{figure}
 
 \subsection{Ejercicio 2}
-/relleno
+Aplica 2-opt sobre las 15 soluciones del ejercicio anterior. ¿El mejor resultado final sigue dependiendo de la ciudad de origen usada por Nearest Neighbor?
 \inputminted{cpp}{../e-n/e2.cpp}
 
 \begin{itemize}
@@ -180,7 +180,7 @@
 \end{figure}
 
 \subsection{Ejercicio 3}
-/relleno
+Implementa otra heurística constructiva: la heurística del "vecino más barato" (cheapest insertion), que en cada paso inserta la ciudad no visitada que menos aumenta el costo total, en cualquier posición de la ruta. Compárala contra Nearest Neighbor.
 \inputminted{cpp}{../e-n/e3.cpp}
 
 \begin{itemize}
@@ -195,7 +195,7 @@
 \end{figure}
 
 \subsection{Ejercicio 4}
-/relleno
+Mide el tiempo de ejecución de Nearest Neighbor + 2-opt para instancias de 20, 50 y 100 ciudades, y compáralo contra el tiempo que tomaría fuerza bruta para esos mismos tamaños (estimado, sin ejecutarlo).
 \inputminted{cpp}{../e-n/e4.cpp}
 
 \begin{itemize}
@@ -210,7 +210,7 @@
 \end{figure}
 
 \subsection{Ejercicio 5}
-/relleno
+Aplica Nearest Neighbor + 2-opt a un caso real: una lista de direcciones o puntos de interés de tu ciudad (puedes usar coordenadas aproximadas), y calcula la ruta de reparto o visita más corta posible.
 \inputminted{cpp}{../e-n/e5.cpp}
 
 \begin{itemize}
@@ -225,7 +225,13 @@
 \end{figure}
 
 \section{Cuestionario}
-% Pendiente de completar.
+\begin{itemize}
+	\item ¿Cuál es la diferencia entre un método aproximado y un método heurístico?
+	\item ¿Por qué Nearest Neighbor puede terminar con un salto muy costoso al final de la ruta? Usa como ejemplo el inicio en la ciudad 2 de la Tabla 3.
+	\item ¿Qué significa que 2-opt encuentre un "óptimo local"? ¿Por qué no garantiza el óptimo global?
+	\item ¿Por qué combinar una heurística constructiva con una de búsqueda local suele dar mejores resultados que usar cualquiera de las dos por separado?
+	\item Comparando la Figura 5 (y la Tabla 5) de este laboratorio con lo visto en el Laboratorio 8, ¿por qué Nearest Neighbor + 2-opt es preferible a Monte Carlo incluso con un presupuesto de cómputo similar?
+\end{itemize}
 
 \section{Conclusiones}
 % Pendiente de completar.
