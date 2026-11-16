@@ -155,12 +155,19 @@ Construir una ruta para el TSP de cinco ciudades del Laboratorio 8 usando la mis
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../img/nn.png}
+    \includegraphics[width=0.95\textwidth]{../img/nn.png}
     \caption{Ruta para el TSP de 5 ciudades.}
     \label{fig:nn}
 \end{figure}
 
-La heurística comienza en la ciudad 0 y, en cada paso, elige la ciudad no visitada más cercana a la ciudad actual. Cuando todas las ciudades han sido visitadas, cierra el recorrido regresando al origen. El programa almacena las distancias en una matriz y usa un vector para marcar las ciudades visitadas y otro para construir la ruta. Para esta instancia obtiene la ruta 0--1--3--4--2--0, de costo 70.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../e-p/grafo_tsp_nearest_neighbor.png}
+    \caption{\textit{Elaboración propia}: Diagrama del grafo y su ruta con \textit{NN}.}
+    \label{fig:nn}
+\end{figure}
+
+Se aplica \textit{TSP} con la heurística \textit{NN}. Define la matriz de distancias y parte de la ciudad 0, se marcan las visitadas y la ruta se va construyendo, luego con un bucle anidado se definen variables que ayudan con la comparación de la ciudad actual con las ciudades no visitadas, se recorren las ciudades y en cada una, si no esta visitada y la distancia entre ellas es menor que la mejor encotrada hasta ese momento, entonces se guarda como candidata, se agrega a la ruta y se marca como visitada (\textit{greedy}).
 
 \subsection{Mejora de una ruta con búsqueda local 2-opt}
 
