@@ -1,11 +1,11 @@
 # Fdb version 4
-["pdflatex"] 1794804196.47261 "/home/camiloasd/Documentos/VS_ALT/lab_ADA/ActividadesLaboratorioADA-A/Unidad3/lab09/TeX/main.tex" "main.pdf" "main" 1794804199.6657 2
+["pdflatex"] 1794839677.30371 "/home/camiloasd/Documentos/VS_ALT/lab_ADA/ActividadesLaboratorioADA-A/Unidad3/lab09/TeX/main.tex" "main.pdf" "main" 1794839681.28463 2
   "../e-n/e1.cpp" 1794695165.4941 716 5bf7b2ebf88986dd580b11a238aa7bd4 ""
   "../e-n/e2.cpp" 1794695165.49428 1176 16d89be6a58f941bbdc569428b760fc1 ""
   "../e-n/e3.cpp" 1794695165.49447 2013 065bf47242825e15e3a8020f1336a6a5 ""
   "../e-n/e4.cpp" 1794695165.49466 1640 7c10adc48e7b76ba212fa84bbf7c612d ""
   "../e-n/e5.cpp" 1794695165.49473 4195 99f2ee6a942b27cba67eca0d0837e198 ""
-  "../e-n/tsp.h" 1794695165.49939 5603 3af0d99859f61dd0219e48fee50d16b2 ""
+  "../e-n/tsp.h" 1794839669.08903 4736 3214f196b02e63a5f5aa1a8ff9d4e94b ""
   "../e-p/demostracion_2opt.png" 1794804007.98784 91420 ad1c33ba9e858a537147caecfa0876ef ""
   "../e-p/grafo_tsp_2opt.png" 1794799367.30851 142662 fb435690672f7b84ba1fa035c53393ec ""
   "../e-p/grafo_tsp_nearest_neighbor.png" 1794794624.52085 143114 093156e44dbd54c4e02dabbfd3538440 ""
@@ -167,13 +167,13 @@
   "_minted/345436B7D08CEFED8AF7F2DB8D41AA22.highlight.minted" 1794797118.68377 10023 ca77b2669db42cbb3f6ae4c29e62d3f9 ""
   "_minted/39FEF36E45B2634A8B6175814A976561.highlight.minted" 1794797118.68831 7383 f67ed0dd62958e20441c82a536cc5bf5 ""
   "_minted/6F33707408FAC0351E8BEBB821F90598.highlight.minted" 1794797118.66123 7416 09995662665268ff2b1d9d15858d81ab ""
-  "_minted/8A0D92B7DD85A68180E406C72E499D2B.highlight.minted" 1794797118.67356 25294 0d92173cae71b2f5178b250debe0b40b ""
   "_minted/C8AD8544E85BA3FF20D8677967AC3D1B.highlight.minted" 1794797118.65733 6143 71b98b89e422cc8cc4c18dfe5256dc75 ""
+  "_minted/D63DECAA195F3532FDFE0AD72B7CC968.highlight.minted" 1794839672.56256 23595 4eb0813ef20f5fc4c0dc81e9103b144e ""
   "_minted/D921D00F11DEE44BA0CC263C45F40D9F.highlight.minted" 1794797118.67578 3454 778bd9cb9ed756f7633bf96c51108960 ""
-  "_minted/_FAD58DE7366495DB4650CFEFAC2FCD61.index.minted" 1794797118.6976 661 639a13ce891f0a0694ba56cc895173f9 ""
+  "_minted/_FAD58DE7366495DB4650CFEFAC2FCD61.index.minted" 1794839673.80747 661 efd8569753db3ae4f4df2bc3183663d4 ""
   "_minted/default.style.minted" 1794797118.50815 6426 e1fb43a91491f41b33310478eee48cdb ""
-  "main.aux" 1794804199.55367 5014 fdf9a978152c262be20e3f1a94c542fa "pdflatex"
-  "main.out" 1794804199.55667 2002 156b20e84662796e58c2ef8f1c9db4c8 "pdflatex"
+  "main.aux" 1794839681.1437 5014 e419375c80e284666798e5d665a00540 "pdflatex"
+  "main.out" 1794839681.1477 2002 156b20e84662796e58c2ef8f1c9db4c8 "pdflatex"
   "main.tex" 1794804192.6402 11873 ec328590ecd6b351eca7b937e9c17e33 ""
   (generated)
   "main.aux"

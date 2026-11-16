@@ -1,17 +1,16 @@
-// tsp.h — núcleo compartido por los ejercicios del laboratorio 8 (TSP).
-// Cada ejercicio incluye este archivo y solo agrega su propio main.
+// Cada ejercicio incluye este archivo y solo agrega su propio main
 #pragma once
 #include <bits/stdc++.h>
 using namespace std;
 
 using Mat  = vector<vector<double>>;
-using Ruta = vector<int>;   // orden de visita; el ciclo se cierra solo (último -> primero)
+using Ruta = vector<int>;   // orden de visita; el ciclo se cierra solo
 const double EPS = 1e-9;    // tolerancia: los doubles nunca se comparan con ==
 
-// ---------- Instancia ----------
+// Instancia 
 struct Instancia { int n; vector<pair<double, double>> p; Mat d; };
 
-// Semilla fija: los ejercicios encadenados trabajan con las MISMAS ciudades.
+// Los ejercicios trabajan con las mismas ciudades
 inline Instancia generar(int n, unsigned semilla = 42) {
     mt19937 gen(semilla);
     uniform_real_distribution<double> U(0, 100);
@@ -23,10 +22,10 @@ inline Instancia generar(int n, unsigned semilla = 42) {
     return I;
 }
 
-// Variante para coordenadas reales (latitud, longitud en grados): distancias Haversine en km.
-// La euclidiana sobre grados distorsiona: a la latitud de Arequipa 1° de longitud mide ~4% menos que 1° de latitud.
+// Variante para coordenadas reales: distancias Haversine en km
+// La euclidiana sobre grados distorsiona a la latitud de Arequipa 1° de longitud mide ~4% menos que 1° de latitud
 inline double haversine(double lat1, double lon1, double lat2, double lon2) {
-    const double R = 6371.0, rad = M_PI / 180;  // radio medio terrestre (km)
+    const double R = 6371.0, rad = M_PI / 180;  // radio medio terrestre
     double a = pow(sin((lat2 - lat1) * rad / 2), 2) +
                cos(lat1 * rad) * cos(lat2 * rad) * pow(sin((lon2 - lon1) * rad / 2), 2);
     return 2 * R * asin(sqrt(a));
@@ -41,15 +40,15 @@ inline Instancia desdeCoordenadas(const vector<pair<double, double>>& latlon) {
     return I;
 }
 
-// Costo del ciclo cerrado.
+// Costo del ciclo cerrado
 inline double costo(const Ruta& r, const Mat& d) {
     double s = 0;
     for (size_t i = 0; i < r.size(); i++) s += d[r[i]][r[(i + 1) % r.size()]];
     return s;
 }
 
-// ---------- Heurísticas constructivas ----------
-// Vecino más cercano: desde la ciudad actual, va a la no visitada más cercana.
+// Heurísticas constructivas 
+// TSP: desde la ciudad actual, va a la no visitada más cercana.
 inline Ruta vecinoCercano(int origen, const Mat& d) {
     int n = d.size();
     Ruta r{origen};
@@ -65,8 +64,7 @@ inline Ruta vecinoCercano(int origen, const Mat& d) {
     return r;
 }
 
-// Inserción más barata: parte de {origen, su ciudad más cercana} e inserta, en cada paso,
-// la ciudad k y la arista (a,b) que minimizan d[a][k] + d[k][b] - d[a][b].
+// Inserción más barata
 inline Ruta insercionBarata(int origen, const Mat& d) {
     int n = d.size(), cerca = -1;
     for (int j = 0; j < n; j++)
@@ -91,9 +89,8 @@ inline Ruta insercionBarata(int origen, const Mat& d) {
     return r;
 }
 
-// ---------- Búsqueda local ----------
-// 2-opt: invierte el tramo r[i+1..j] mientras reemplazar las aristas (a,b),(c,e) por (a,c),(b,e) acorte.
-// Solo se evalúa el delta de las 2 aristas que cambian.
+// Busqueda local
+// 2-opt: invierte el tramo r[i+1..j]
 inline Ruta dosOpt(Ruta r, const Mat& d) {
     int n = r.size();
     bool mejora = true;
@@ -112,15 +109,12 @@ inline Ruta dosOpt(Ruta r, const Mat& d) {
     return r;
 }
 
-// ---------- Resumen de resultados ----------
+// Resumen de resultados 
 struct Resumen { double mejor, peor, media; int idxMejor, enMejor, distintos; };
 
-// "Que el programa cuente por ti": mejor, peor, media, cuántos casos alcanzan el mejor
-// y cuántos costos distintos hay (distintos == 1 => todos los casos dan el mismo resultado).
+
 inline Resumen resumir(const vector<double>& v) {
     double mejor = *min_element(v.begin(), v.end());
-    // primer origen dentro de la tolerancia: evita que una diferencia de 1e-13 entre
-    // rotaciones del mismo ciclo elija un "mejor" arbitrario
     int im = find_if(v.begin(), v.end(), [&](double x) { return x - mejor < EPS; }) - v.begin();
     vector<double> s = v;
     sort(s.begin(), s.end());
