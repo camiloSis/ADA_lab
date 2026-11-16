@@ -182,7 +182,21 @@ Aplicar 2-opt a la ruta inicial 0--1--2--4--3--0, obtenida con Nearest Neighbor 
     \label{fig:2-opt}
 \end{figure}
 
-El algoritmo parte de una ruta completa y prueba invertir segmentos entre distintas posiciones. Calcula el costo de cada ruta candidata y acepta una inversión solo cuando reduce estrictamente el costo. Repite las pruebas hasta que ninguna inversión produzca una mejora. En este ejemplo invierte un segmento y obtiene la ruta 0--1--3--4--2--0, reduciendo el costo de 85 a 70.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../e-p/grafo_tsp_2opt.png}
+    \caption{\textit{Elaboración propia}: Ruta inicial y ruta mejorada con \textit{2-opt}.}
+    \label{fig:2-opt}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../e-p/demostracion_2opt.png}
+    \caption{\textit{Elaboración propia}: Demostración del algoritmo en la quinta evaluación de pares.}
+    \label{fig:demostracion-2opt}
+\end{figure}
+
+Mejora una ruta usando \textit{2-opt}, calcula costo y suma distancias mediante \texttt{costoRuta()}. Con un while repite mientras la última pasada consiga alguna mejora, de lo contrario se detiene y el punto encontrado es el \textit{óptimo local}. Se prueban todos los pares \texttt{i,j} sin contar \texttt{i=0} pues de ahí empieza. Para cada par se hace una copia de la ruta original e invierte el segmento entre las posiciones \texttt{i} y \texttt{j}, si esta nueva ruta tiene un costo menor, se reemplaza la actual y repite el bucle.
 
 \section{Ejercicios/Problemas propuestos}
 
