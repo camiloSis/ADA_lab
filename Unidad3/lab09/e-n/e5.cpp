@@ -1,10 +1,7 @@
-// Ejercicio 5: ruta de visita cerrada por 18 puntos emblemáticos de Arequipa con NN + 2-opt.
-// Distancias Haversine (línea recta, en km), no por calles. Se valida contra el óptimo exacto (Held-Karp).
 #include "tsp.h"
 
 struct Lugar { const char* nombre; double lat, lon; };
 
-// Coordenadas aproximadas (Wikipedia, Wikivoyage, Sygic). El índice 0 es el punto de partida de la presentación.
 const vector<Lugar> LUGARES = {
     {"Plaza de Armas",                    -16.39880, -71.53690},
     {"Basílica Catedral",                 -16.39810, -71.53640},
@@ -26,7 +23,6 @@ const vector<Lugar> LUGARES = {
     {"Molino de Sabandía",                -16.45654, -71.49963},
 };
 
-// Óptimo exacto por programación dinámica (Held-Karp): O(n² 2ⁿ), viable con n = 18; con la ciudad 0 fija.
 double optimo(const Mat& d) {
     int m = d.size() - 1, N = 1 << m;
     vector<vector<double>> dp(N, vector<double>(m, 1e18));  // dp[S][j]: mínimo para visitar S terminando en j

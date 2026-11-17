@@ -41,7 +41,7 @@
 \newcommand{\itemSchool}{Escuela Profesional de Ingeniería de Sistemas}
 \newcommand{\itemAcademic}{2026 - B}
 \newcommand{\itemInput}{12/11/2026}
-\newcommand{\itemOutput}{--/11/2026}
+\newcommand{\itemOutput}{16/11/2026}
 \newcommand{\itemPracticeNumber}{09}
 \newcommand{\itemTheme}{Métodos Heurísticos: Heurísticas Constructivas y de Búsqueda Local.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -201,7 +201,7 @@ Mejora una ruta usando \textit{2-opt}, calcula costo y suma distancias mediante 
 \section{Ejercicios/Problemas propuestos}
 
 \subsection{Header compartido: tsp.h}
-Reúne tipos, datos y funciones comunes para todos los ejercicios, se incorporan en estos mediante \texttt{\#include "tsp.h"}. Calcula costos y aplica las heurísticas Nearest Neighbor y 2-opt. Contiene también funciones para generar instancias aleatorias de TSP y para medir tiempos de ejecución.
+El archivo \texttt{tsp.h} es el núcleo compartido de los ejercicios 1 al 4: define los datos y las heurísticas del problema del viajante, y cada ejercicio solo agrega su propio \texttt{main}. Usa \texttt{Mat} como matriz de distancias y \texttt{Ruta} como orden de visita, donde el ciclo se cierra solo porque la última ciudad vuelve a la primera; además, \texttt{EPS} es la tolerancia para comparar números decimales. La estructura \texttt{Instancia} guarda las ciudades y su matriz de distancias: \texttt{generar} crea ciudades aleatorias con semilla fija, de modo que todos los ejercicios trabajan con los mismos datos, y \texttt{desdeCoordenadas} usa coordenadas reales con distancia Haversine. La función \texttt{costo} calcula la longitud del ciclo cerrado. Como heurísticas constructivas, \texttt{vecinoCercano} va siempre a la ciudad no visitada más cercana e \texttt{insercionBarata} inserta en cada paso la ciudad que menos aumenta el costo. Como búsqueda local, \texttt{dosOpt} mejora una ruta invirtiendo tramos, evaluando solo las dos aristas que cambian, hasta alcanzar un \textit{óptimo local}. Por último, \texttt{resumir} calcula el mejor, el peor y la media de los costos de varias corridas.
 \inputminted{cpp}{../e-n/tsp.h}
 
 \subsection{Ejercicio 1}
@@ -209,7 +209,13 @@ Implementa Nearest Neighbor para un TSP de 15 ciudades generadas aleatoriamente,
 \inputminted{cpp}{../e-n/e1.cpp}
 
 \begin{itemize}
-    \item /relleno
+    \item Evalúa si el resultado del vecino más cercano depende de la ciudad de
+partida. Se generan 15 ciudades con semilla fija y se ejecuta \texttt{vecinoCercano}
+desde cada origen, calculando el costo de cada ruta con \texttt{costo}. Luego,
+\texttt{resumir} obtiene el mejor, el peor y la media de los costos, cuántos orígenes
+alcanzan el mejor y cuántos costos distintos hay. Si hay más de un costo distinto, el
+resultado cambia según el origen, y se informa cuánto excede el peor al mejor en
+porcentaje.
 \end{itemize}
 
 \begin{figure}[H]
@@ -219,12 +225,30 @@ Implementa Nearest Neighbor para un TSP de 15 ciudades generadas aleatoriamente,
     \label{fig:e1}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../img/e1py.png}
+    \caption{\textit{Elaboración propia}: Cómo cambia la ruta \textit{NN} según la ciudad de origen.}
+    \label{fig:e1}
+\end{figure}
+
+\begin{itemize}
+\item En el eje horizontal se representan las quince ciudades de origen y, en el eje vertical, el costo de cada ciclo cerrado, incluido el regreso a la ciudad inicial. La línea punteada indica el costo promedio de las rutas, que es $406.973$. La barra verde corresponde al menor costo observado, $363.564$, obtenido al iniciar en la ciudad $9$, mientras que el mayor costo es $446.415$ y se obtiene al iniciar en la ciudad $8$. Este último resultado supera al mejor en aproximadamente $22.8\%$, lo que evidencia que la heurística depende de la ciudad inicial: sus decisiones son locales y no se revisan durante la construcción de la ruta. Los costos corresponden a las unidades de distancia del plano generado para el experimento y no representan kilómetros. El gráfico permite comparar la sensibilidad de \textit{Nearest Neighbor} respecto al origen, aunque no determina por sí solo qué tan cerca está cada ruta de la solución óptima global.
+\end{itemize}
+
 \subsection{Ejercicio 2}
 Aplica 2-opt sobre las 15 soluciones del ejercicio anterior. ¿El mejor resultado final sigue dependiendo de la ciudad de origen usada por Nearest Neighbor?
 \inputminted{cpp}{../e-n/e2.cpp}
 
 \begin{itemize}
-    \item /relleno
+    \item Mide cuánto mejora la búsqueda local \textit{2-opt} las rutas del vecino
+más cercano. Con las mismas 15 ciudades del ejercicio 1, se construye la ruta con
+\texttt{vecinoCercano} desde cada origen, se guarda su costo y luego se le aplica
+\texttt{dosOpt}, registrando el nuevo costo y el porcentaje de mejora. Con
+\texttt{resumir} se comparan ambos métodos en mejor, peor y media de costos, casos que
+alcanzan el mejor y costos distintos, así como la dispersión entre el peor y el mejor
+origen. Como 2-opt solo acepta cambios que reducen el costo, ninguna ruta empeora, y
+normalmente disminuyen tanto el costo medio como la dependencia del origen.
 \end{itemize}
 
 \begin{figure}[H]
@@ -234,12 +258,30 @@ Aplica 2-opt sobre las 15 soluciones del ejercicio anterior. ¿El mejor resultad
     \label{fig:e2}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../e-n/e2_comparacion_nn_2opt.png}
+    \caption{\textit{Elaboración propia}: Comparación de costos entre Nearest Neighbor y 2-opt para cada ciudad.}
+    \label{fig:e2}
+\end{figure}
+
+\begin{itemize}
+\item La figura compara los resultados de la heurística \textit{Nearest Neighbor} (NN) antes y después de aplicar la búsqueda local 2-opt para cada una de las quince ciudades de inicio. En el gráfico superior, el eje horizontal representa la ciudad de origen y el eje vertical, el costo del ciclo cerrado; las barras amarillas muestran el costo de NN y las verdes, el costo tras aplicar 2-opt. Se observa que 2-opt reduce el costo para los quince orígenes. Además, once de las quince rutas terminan con el mismo costo, $358.128$, mientras que las cuatro restantes quedan en $398.641$ o $404.695$. El gráfico inferior muestra el porcentaje de reducción del costo para cada origen; la línea discontinua representa la reducción media, de $9.01\%$. La mayor reducción ocurre al iniciar en la ciudad $8$: el costo pasa de $446.415$ a $358.128$, lo que equivale a una mejora de $19.78\%$. En conjunto, los gráficos ilustran que 2-opt mejora las rutas construidas por NN y reduce la variación debida a la ciudad inicial, aunque el resultado continúa dependiendo de la ruta inicial y no garantiza por sí solo hallar el óptimo global. Los costos corresponden a unidades de distancia del plano generado para el experimento, no a kilómetros.
+\end{itemize}
 \subsection{Ejercicio 3}
 Implementa otra heurística constructiva: la heurística del "vecino más barato" (cheapest insertion), que en cada paso inserta la ciudad no visitada que menos aumenta el costo total, en cualquier posición de la ruta. Compárala contra Nearest Neighbor.
 \inputminted{cpp}{../e-n/e3.cpp}
 
 \begin{itemize}
-    \item /relleno
+    \item Compara dos heurísticas constructivas, el vecino más cercano y la inserción
+barata, sobre las mismas 15 ciudades. Para cada origen se calcula el costo de ambas rutas y
+se determina cuál gana o si empatan, comparando con la tolerancia \texttt{EPS}. Con
+\texttt{resumir} se obtienen el mejor, el peor y la media de cada método, y con
+\texttt{tiempoMs} se mide el tiempo de ejecución repitiendo la heurística 2000 veces para
+poder medirlo. Finalmente se informa la mejora media de la inserción barata sobre el vecino
+más cercano y cuántas veces es más lenta. El ejercicio ilustra el compromiso entre calidad
+de la ruta y tiempo de cómputo: la inserción barata, de complejidad $O(n^3)$, suele dar
+mejores rutas que el vecino más cercano, de complejidad $O(n^2)$, pero tarda más.
 \end{itemize}
 
 \begin{figure}[H]
@@ -249,12 +291,30 @@ Implementa otra heurística constructiva: la heurística del "vecino más barato
     \label{fig:e3}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../e-n/e3_comparacion_nn_insercion.png}
+    \caption{\textit{Elaboración propia}: Comparación de costos entre Nearest Neighbor y Cheapest Insertion para cada ciudad.}
+    \label{fig:e3}
+\end{figure}
+
+\begin{itemize}
+\item La figura compara las heurísticas \textit{Nearest Neighbor} (NN) e inserción barata para una misma instancia de quince ciudades y distintos puntos de inicio. En el gráfico superior, las barras muestran el costo del ciclo cerrado de cada método por origen. Inserción barata obtiene un costo menor en once casos, mientras que NN resulta mejor en cuatro; no se producen empates. En promedio, el costo pasa de $406.973$ con NN a $375.743$ con inserción barata, lo que representa una reducción media reportada por el programa de $7.67\%$. El gráfico central expresa la variación porcentual de inserción barata respecto a NN: los valores positivos indican ahorro y los negativos, un costo mayor. Finalmente, el gráfico inferior compara los tiempos medios medidos; en esta ejecución, NN tardó $0.0106$ ms e inserción barata $0.0322$ ms, aproximadamente $3.0$ veces más. Estos tiempos dependen del equipo y de las condiciones de ejecución, por lo que deben interpretarse como mediciones orientativas y no como valores absolutos. En conjunto, los resultados muestran que inserción barata suele producir ciclos de menor costo en esta instancia, pero requiere más tiempo de ejecución que NN.
+\end{itemize}
+
 \subsection{Ejercicio 4}
 Mide el tiempo de ejecución de Nearest Neighbor + 2-opt para instancias de 20, 50 y 100 ciudades, y compáralo contra el tiempo que tomaría fuerza bruta para esos mismos tamaños (estimado, sin ejecutarlo).
 \inputminted{cpp}{../e-n/e4.cpp}
 
 \begin{itemize}
-    \item /relleno
+    \item Contrasta la heurística NN + 2-opt con la fuerza bruta para $n = 20, 50$ y
+$100$ ciudades. Se mide el tiempo de ejecutar \texttt{vecinoCercano} seguido de
+\texttt{dosOpt}, y se mide cuánto tarda en evaluarse una ruta mediante permutaciones
+(\texttt{next\_permutation}) con la ciudad 0 fija. Como existen $(n-1)!/2$ rutas distintas,
+el tiempo de la fuerza bruta se estima multiplicando ese número por el tiempo medido por
+ruta, sin ejecutarla realmente. Los resultados muestran que la fuerza bruta crece de forma
+factorial y se vuelve inviable ya desde $n = 20$, mientras que la heurística resuelve el
+problema en milisegundos, aunque sin garantizar el óptimo.
 \end{itemize}
 
 \begin{figure}[H]
@@ -264,12 +324,31 @@ Mide el tiempo de ejecución de Nearest Neighbor + 2-opt para instancias de 20, 
     \label{fig:e4}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../e-n/e4_escalabilidad_tsp.png}
+    \caption{\textit{Elaboración propia}: Escalabilidad de Nearest Neighbor + 2-opt frente a la fuerza bruta.}
+    \label{fig:e4}
+\end{figure}
+
+\begin{itemize}
+\item La figura muestra cómo cambia el costo computacional al aumentar el número de ciudades del TSP. El primer panel presenta el tiempo medido de la heurística NN + 2-opt para $n=20$, $50$ y $100$; estos tiempos son muy pequeños en comparación con los estimados para fuerza bruta. El segundo panel muestra la cantidad de ciclos posibles que esta última tendría que evaluar, calculada como $(n-1)!/2$ al fijar una ciudad y considerar equivalentes un ciclo y su recorrido inverso. En el tercer panel se representa, en escala logarítmica, el tiempo estimado para evaluar todos esos ciclos. La línea discontinua indica la edad aproximada del universo, $1.38\times10^{10}$ años: incluso para $n=20$, la estimación es del orden de cientos de años, y para $n=50$ y $n=100$ crece a órdenes de magnitud muchísimo mayores. La búsqueda exhaustiva no se ejecutó; el programa estima su duración multiplicando el tiempo medido por ruta por la cantidad de rutas posibles. Por ello, las estimaciones dependen del rendimiento del equipo y de la medición, mientras que la tendencia evidencia el crecimiento factorial de la fuerza bruta frente a la solución heurística.
+\end{itemize}
+
 \subsection{Ejercicio 5}
 Aplica Nearest Neighbor + 2-opt a un caso real: una lista de direcciones o puntos de interés de tu ciudad (puedes usar coordenadas aproximadas), y calcula la ruta de reparto o visita más corta posible.
 \inputminted{cpp}{../e-n/e5.cpp}
 
 \begin{itemize}
-    \item /relleno
+    \item Aplica las heurísticas a un caso real: una ruta turística cerrada por 18
+lugares de Arequipa. Las distancias se calculan con la fórmula de Haversine a partir de
+las coordenadas geográficas. Se ejecuta \texttt{vecinoCercano} desde cada lugar y se
+mejora cada ruta con \texttt{dosOpt}, quedándose con la más corta, que se muestra tramo a
+tramo partiendo y terminando en la Plaza de Armas. Luego se compara con el orden original
+de la lista y con el óptimo exacto, calculado mediante programación dinámica
+(\textit{Held-Karp}), que representa los subconjuntos de ciudades visitadas con máscaras de
+bits y evita probar todas las permutaciones. Así se puede medir cuánto se acerca la
+heurística al óptimo, algo posible aquí por el tamaño reducido del problema.
 \end{itemize}
 
 \begin{figure}[H]
@@ -279,16 +358,53 @@ Aplica Nearest Neighbor + 2-opt a un caso real: una lista de direcciones o punto
     \label{fig:e5}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../e-n/grafo_arequipa.png}
+    \caption{\textit{Elaboración propia}: Comparación del estado inicial del grafo y con sus rutas calculadas.}
+    \label{fig:e5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../img/e5maps.png}
+    \caption{\textit{Elaboración propia}: Grafo con las rutas calculadas usando NN y 2-opt, se ayuda de Google Maps.}
+    \label{fig:e5}
+\end{figure}
+
 \section{Cuestionario}
+
 \begin{itemize}
-	\item ¿Cuál es la diferencia entre un método aproximado y un método heurístico?
-	\item ¿Por qué Nearest Neighbor puede terminar con un salto muy costoso al final de la ruta? Usa como ejemplo el inicio en la ciudad 2 de la Tabla 3.
-	\item ¿Qué significa que 2-opt encuentre un "óptimo local"? ¿Por qué no garantiza el óptimo global?
-	\item ¿Por qué combinar una heurística constructiva con una de búsqueda local suele dar mejores resultados que usar cualquiera de las dos por separado?
-	\item Comparando la Figura 5 (y la Tabla 5) de este laboratorio con lo visto en el Laboratorio 8, ¿por qué Nearest Neighbor + 2-opt es preferible a Monte Carlo incluso con un presupuesto de cómputo similar?
+    \item \textbf{¿Cuál es la diferencia entre un método aproximado y un método heurístico?}
+
+    Un método aproximado ofrece una \textit{garantía} sobre la calidad de su respuesta: se sabe de antemano que la solución no se aleja del óptimo más de cierto factor (por ejemplo, ``nunca más de 1.5 veces el óptimo''). Un método heurístico no ofrece esa garantía: se apoya en una regla intuitiva que suele funcionar bien en la práctica, pero en el peor caso puede dar una solución mala sin que se pueda saber cuánto. Es la diferencia entre una promesa demostrada y una buena costumbre.
+
+    \item \textbf{¿Por qué Nearest Neighbor puede terminar con un salto muy costoso al final de la ruta?}
+
+    Porque es voraz: en cada paso elige la ciudad más cercana sin pensar en lo que vendrá después. Al avanzar, va ``agotando'' las ciudades cercanas y puede dejar atrás ciudades aisladas que nadie visitó. Cuando solo quedan esas ciudades lejanas, no hay más opción que hacer un salto largo para alcanzarlas y otro para cerrar el ciclo. Es como recoger siempre el objeto más próximo en una habitación: al final puede quedar uno olvidado en la otra esquina. En el caso del inicio en la ciudad 2, el salto costoso se observa en las últimas aristas de la ruta; \textbf{[completar con las ciudades y distancias de la Tabla 3]}.
+
+    \item \textbf{¿Qué significa que 2-opt encuentre un ``óptimo local''? ¿Por qué no garantiza el óptimo global?}
+
+    Un óptimo local es una ruta que ningún intercambio de 2-opt (quitar dos aristas y reconectar invirtiendo un tramo) puede mejorar. Es como estar en el fondo de un valle: cualquier paso pequeño sube, pero puede existir otro valle más profundo en otra parte del mapa. 2-opt solo mira cambios pequeños y nunca acepta empeorar, así que, una vez en un valle, no puede salir de él. Para llegar al óptimo global a veces haría falta reorganizar muchas aristas a la vez, o empeorar temporalmente la ruta, y 2-opt no hace ninguna de las dos cosas.
+
+    \item \textbf{¿Por qué combinar una heurística constructiva con una de búsqueda local suele dar mejores resultados?}
+
+    Porque cada una corrige la debilidad de la otra. La constructiva (como NN) entrega rápidamente una ruta razonable, pero con defectos: cruces y saltos largos producto de decisiones voraces. La búsqueda local (como 2-opt) es muy buena para pulir esos defectos, pero depende mucho del punto de partida: si empieza desde una ruta mala, puede quedar atrapada en un valle poco profundo. Al unirlas, la constructiva coloca la solución en una buena zona y la búsqueda local la refina, logrando un resultado mejor que con cualquiera por separado.
+
+    \item \textbf{¿Por qué Nearest Neighbor + 2-opt es preferible a Monte Carlo incluso con un presupuesto de cómputo similar?}
+
+    Monte Carlo prueba rutas al azar y se queda con la mejor que encuentra. Como el número de rutas posibles crece de forma factorial, la probabilidad de que una ruta aleatoria sea buena es diminuta, y cada intento es independiente: no aprende nada de los anteriores. En cambio, NN + 2-opt usa la estructura del problema: construye una ruta sensata desde el inicio y luego la mejora paso a paso, aprovechando que cada cambio acepta solo si acorta el recorrido. Con el mismo tiempo de cómputo, uno busca a ciegas y el otro avanza con dirección. 
 \end{itemize}
 
 \section{Conclusiones}
+
+\begin{itemize}
+    \item El problema del viajante no puede resolverse por fuerza bruta en la práctica, pues el número de rutas crece factorialmente; por ello las heurísticas son necesarias.
+    \item El vecino más cercano es rápido y sencillo, pero su resultado depende de la ciudad de partida y puede terminar con saltos muy costosos al final.
+    \item La búsqueda local 2-opt mejora cualquier ruta sin empeorarla nunca, y reduce la dependencia del origen, aunque solo garantiza un óptimo local.
+    \item La inserción barata suele producir mejores rutas que el vecino más cercano, pero requiere más tiempo de cómputo, lo que muestra el compromiso entre calidad y velocidad.
+    \item Combinar una heurística constructiva con una de búsqueda local ofrece el mejor equilibrio, y supera a la búsqueda aleatoria de Monte Carlo con un costo de cómputo comparable.
+\end{itemize}
 % Pendiente de completar.
 
 	%\begin{itemize}	
