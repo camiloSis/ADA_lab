@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.18)  16 NOV 2026 22:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.9.18)  16 NOV 2026 22:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -773,10 +773,10 @@ Overfull \hbox (0.89597pt too wide) in paragraph at lines 139--147
 \pydata@fh@0=\write6
 \openout6 = `_FAD58DE7366495DB4650CFEFAC2FCD61.data.minted'.
 
-runsystem(latexminted config  --timestamp 20261116224743 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+runsystem(latexminted config  --timestamp 20261116225147 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
 
 (./_FAD58DE7366495DB4650CFEFAC2FCD61.config.minted)
-runsystem(latexminted cleanconfig  --timestamp 20261116224743 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
+runsystem(latexminted cleanconfig  --timestamp 20261116225147 FAD58DE7366495DB4650CFEFAC2FCD61)...executed safely (allowed).
 
  (./_minted/default.style.minted) (./_minted/C8AD8544E85BA3FF20D8677967AC3D1B.highlight.minted
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
@@ -1039,11 +1039,11 @@ Package pdftex.def Info: ../img/logo_abet.png  used on input line 374.
  [19 <../img/e5.png> <../e-n/grafo_arequipa.png>]
 File: ../img/logo_episunsa.png Graphic file (type png)
 <use ../img/logo_episunsa.png>
-Package pdftex.def Info: ../img/logo_episunsa.png  used on input line 387.
+Package pdftex.def Info: ../img/logo_episunsa.png  used on input line 388.
 (pdftex.def)             Requested size: 85.35826pt x 25.38835pt.
 File: ../img/logo_abet.png Graphic file (type png)
 <use ../img/logo_abet.png>
-Package pdftex.def Info: ../img/logo_abet.png  used on input line 387.
+Package pdftex.def Info: ../img/logo_abet.png  used on input line 388.
 (pdftex.def)             Requested size: 34.14322pt x 38.26549pt.
  [20 <../img/e5maps.png>]
 File: ../img/logo_episunsa.png Graphic file (type png)
@@ -1078,9 +1078,9 @@ Here is how much of TeX's memory you used:
  50376 multiletter control sequences out of 15000+600000
  632329 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 94i,16n,93p,1391b,1119s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 94i,17n,93p,1391b,1119s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfit0900.pfb>
-Output written on main.pdf (21 pages, 2981836 bytes).
+Output written on main.pdf (21 pages, 2981384 bytes).
 PDF statistics:
  294 PDF objects out of 1000 (max. 8388607)
  202 compressed objects within 3 object streams
