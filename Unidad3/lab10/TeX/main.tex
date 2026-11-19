@@ -1,0 +1,301 @@
+%package list
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[top=3cm, bottom=3cm, outer=3cm, inner=3cm]{geometry}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{url}
+%\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{array}
+%\usepackage{multicol}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\usepackage{svg}
+\usepackage{xcolor}
+\usepackage{minted}
+
+%\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{array}
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\itemEmail}{ccapatinta@unsa.edu.pe}
+\newcommand{\itemStudent}{Capatinta Almanza Camilo B. A.}
+\newcommand{\itemCourse}{Lab. Análisis y Diseño de Algoritmos}
+\newcommand{\itemCourseCode}{1702231}
+\newcommand{\itemSemester}{IV}
+\newcommand{\itemUniversity}{Universidad Nacional de San Agustín de Arequipa}
+\newcommand{\itemFaculty}{Facultad de Ingeniería de Producción y Servicios}
+\newcommand{\itemDepartment}{Departamento Académico de Ingeniería de Sistemas e Informática}
+\newcommand{\itemSchool}{Escuela Profesional de Ingeniería de Sistemas}
+\newcommand{\itemAcademic}{2026 - B}
+\newcommand{\itemInput}{12/11/2026}
+\newcommand{\itemOutput}{16/11/2026}
+\newcommand{\itemPracticeNumber}{10}
+\newcommand{\itemTheme}{Métodos Evolutivos y Metaheurísticos.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[english,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\AtBeginDocument{\selectlanguage{spanish}}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\refname}{Referencias}
+\renewcommand{\tablename}{Tabla} %esto no funciona cuando se usa babel
+\AtBeginDocument{%
+	\renewcommand\tablename{Tabla}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{40.51407pt}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\fancyhead[L]{\raisebox{-0.2\height}{\includegraphics[width=3cm]{../img/logo_episunsa.png}}}
+\fancyhead[C]{\fontsize{7}{7}\selectfont	\itemUniversity \\ \itemFaculty \\ \itemDepartment \\ \itemSchool \\ \textbf{\itemCourse}}
+\fancyhead[R]{\raisebox{-0.2\height}{\includegraphics[width=1.2cm]{../img/logo_abet}}}
+\fancyfoot[L]{Estudiante Capatinta C.}
+\fancyfoot[C]{\itemCourse}
+\fancyfoot[R]{Página \thepage}
+
+% para el codigo fuente
+
+\usepackage{color, colortbl}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\definecolor{codebackground}{rgb}{0.95, 0.95, 0.92}
+\setminted{%
+  fontsize=\small,
+  breaklines,
+  linenos,
+  numbersep=6pt,
+  frame=lines,
+  framesep=3mm,
+  baselinestretch=1,
+  bgcolor=codebackground,
+  tabsize=3
+}
+\definecolor{tablebackground}{rgb}{0.8, 0, 0}
+
+\begin{document}
+	
+	\vspace*{10px}
+	
+	\begin{center}
+		\parbox{0.8\textwidth}{\centering\fontsize{17}{20}\selectfont\textbf{Informe de laboratorio \itemPracticeNumber}}
+	\end{center}
+	\begin{center}
+		\parbox{0.8\textwidth}{\centering\textbf{\Large Tema: \itemTheme}}
+	\end{center}
+	%\vspace*{0.5cm}	
+
+	\begin{flushright}
+		\begin{tabular}{|M{2.5cm}|N|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white} \textbf{Nota}  \\
+			\hline 
+			     \\[30pt]
+			\hline 			
+		\end{tabular}
+	\end{flushright}	
+
+	\begin{table}[h!]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}        
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white} \textbf{Estudiante} & \color{white}\textbf{Escuela}  & \color{white}\textbf{Asignatura}   \\
+			\hline 
+			{\itemStudent \par \itemEmail} & \itemSchool & {\itemCourse \par Semestre: \itemSemester \par Código: \itemCourseCode}     \\
+			\hline 			
+		\end{tabular}
+	\end{table}		
+	
+	\begin{table}[H]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white}\textbf{Laboratorio} & \color{white}\textbf{Tema}  & \color{white}\textbf{Duración}   \\
+			\hline 
+			\itemPracticeNumber & \itemTheme & 02 horas   \\
+			\hline 
+		\end{tabular}
+	\end{table}
+	
+	\begin{table}[H]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\rowcolor{tablebackground}
+			\color{white}\textbf{Semestre académico} & \color{white}\textbf{Fecha de inicio}  & \color{white}\textbf{Fecha de entrega}   \\
+			\hline 
+			\itemAcademic & \itemInput &  \itemOutput  \\
+			\hline 
+		\end{tabular}
+	\end{table}
+	
+\section{Ejercicios propuestos por el docente}
+
+\subsection{Construcción de una ruta con Nearest Neighbor}
+\inputminted{cpp}{../e-p/tsp_nearest_neighbor.cpp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../img/nn.png}
+    \caption{Ruta para el TSP de 5 ciudades.}
+    \label{fig:nn}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../e-p/grafo_tsp_nearest_neighbor.png}
+    \caption{\textit{Elaboración propia}: Diagrama del grafo y su ruta con \textit{NN}.}
+    \label{fig:nn-grafo}
+\end{figure}
+
+\subsection{Mejora de una ruta con búsqueda local 2-opt}
+\inputminted{cpp}{../e-p/tsp_2opt.cpp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../img/2opt.png}
+    \caption{Ruta mejorada con 2-opt.}
+    \label{fig:2-opt}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../e-p/grafo_tsp_2opt.png}
+    \caption{\textit{Elaboración propia}: Ruta inicial y ruta mejorada con \textit{2-opt}.}
+    \label{fig:2-opt-grafo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../e-p/demostracion_2opt.png}
+    \caption{\textit{Elaboración propia}: Demostración del algoritmo en la quinta evaluación de pares.}
+    \label{fig:demostracion-2opt}
+\end{figure}
+
+\section{Ejercicios/Problemas propuestos}
+
+\subsection{Header compartido: tsp.h}
+\inputminted{cpp}{../e-n/tsp.h}
+
+\subsection{Ejercicio 1}
+\inputminted{cpp}{../e-n/e1.cpp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../img/e1.png}
+    \caption{Ejecución del ejercicio 1}
+    \label{fig:e1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../e-n/e1_comparacion.png}
+    \caption{\textit{Elaboración propia}: Resultado del ejercicio 1.}
+    \label{fig:e1-propia}
+\end{figure}
+
+\subsection{Ejercicio 2}
+\inputminted{cpp}{../e-n/e2.cpp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../img/e2.png}
+    \caption{Ejecución del ejercicio 2}
+    \label{fig:e2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../e-n/e2_comparacion.png}
+    \caption{\textit{Elaboración propia}: Comparación de resultados del ejercicio 2.}
+    \label{fig:e2-propia}
+\end{figure}
+
+\subsection{Ejercicio 3}
+\inputminted{cpp}{../e-n/e3.cpp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../img/e3.png}
+    \caption{Ejecución del ejercicio 3}
+    \label{fig:e3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../e-n/e3_comparacion.png}
+    \caption{\textit{Elaboración propia}: Comparación de resultados del ejercicio 3.}
+    \label{fig:e3-propia}
+\end{figure}
+
+\subsection{Ejercicio 4}
+\inputminted{cpp}{../e-n/e4.cpp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../img/e4.png}
+    \caption{Ejecución del ejercicio 4}
+    \label{fig:e4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../e-n/e4_escalabilidad.png}
+    \caption{\textit{Elaboración propia}: Escalabilidad del ejercicio 4.}
+    \label{fig:e4-propia}
+\end{figure}
+
+\subsection{Ejercicio 5}
+\inputminted{cpp}{../e-n/e5.cpp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../img/e5.png}
+    \caption{Ejecución del ejercicio 5}
+    \label{fig:e5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../e-n/grafo_resultados.png}
+    \caption{\textit{Elaboración propia}: Grafo con los resultados calculados.}
+    \label{fig:e5-grafo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{../img/e5maps.png}
+    \caption{\textit{Elaboración propia}: Grafo con las rutas calculadas.}
+    \label{fig:e5-maps}
+\end{figure}
+
+\section{Cuestionario}
+
+\begin{itemize}
+    \item \textbf{Pregunta 1}
+    \item \textbf{Pregunta 2}
+    \item \textbf{Pregunta 3}
+    \item \textbf{Pregunta 4}
+    \item \textbf{Pregunta 5}
+\end{itemize}
+
+\section{Conclusiones}
+
+\end{document}
