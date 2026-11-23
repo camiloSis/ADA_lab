@@ -148,8 +148,14 @@
 	
 \section{Ejercicios propuestos por el docente}
 
-\subsection{}
-\inputminted{cpp}{../e-p/}
+\subsection{Búsqueda Local Iterada (ILS)}
+
+Problema: dado un TSP de 12 ciudades con coordenadas {0,0}, {3,14}, {18,5}, {8,7}, {6,2}, {10,0}, {4,4},
+{1,13}, {19,11}, {8,14}, {2,17}, {7,18}, encontrar la ruta más corta que visita todas las ciudades y regresa a la
+ciudad 0. Con 12 ciudades la fuerza bruta ya sería lenta (11! rutas), así que usamos metaheurísticas. El
+óptimo, verificado con un algoritmo exacto, es 72.21; úsalo para medir qué tan buenas son las soluciones.
+
+\inputminted{cpp}{../e-p/busqueda_local_iterada.cpp}
 
 \begin{figure}[H]
     \centering
@@ -158,8 +164,8 @@
     \label{fig:nn}
 \end{figure}
 
-\subsection{}
-\inputminted{cpp}{../e-p/}
+\subsection{Algoritmo Iterativo Goloso (IG)}
+\inputminted{cpp}{../e-p/algoritmo_iterativo_goloso.cpp}
 
 \begin{figure}[H]
     \centering
