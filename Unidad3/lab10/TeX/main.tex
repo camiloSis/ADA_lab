@@ -159,25 +159,97 @@ ciudad 0. Con 12 ciudades la fuerza bruta ya sería lenta (11! rutas), así que 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.95\textwidth]{../img/nn.png}
-    \caption{Ruta para el TSP de 5 ciudades.}
-    \label{fig:nn}
+    \includegraphics[width=0.95\textwidth]{../img/ILS.png}
+    \caption{Ejecución de \texttt{busqueda\_local\_iterada.cpp}.}
+    \label{fig:ILS}
 \end{figure}
+
+\begin{itemize}
+	\item Explicación1
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{../img/busqueda_local_iterada.png}
+    \caption{Comportamiento observada de búsqueda local iterada.}
+    \label{fig:ILS_diagrama}
+\end{figure}
+
+\begin{itemize}
+	\item Explicación1
+\end{itemize}
+
 
 \subsection{Algoritmo Iterativo Goloso (IG)}
 \inputminted{cpp}{../e-p/algoritmo_iterativo_goloso.cpp}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{../img/2opt.png}
-    \caption{Ruta mejorada con 2-opt.}
-    \label{fig:2-opt}
+    \includegraphics[width=0.95\textwidth]{../img/IG.png}
+    \caption{Ejecución de \texttt{algoritmo\_iterativo\_goloso.cpp}.}
+    \label{fig:IG_diagrama}
 \end{figure}
+
+\begin{itemize}
+	\item Explicación1
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{../img/algoritmo_iterativo_goloso.png}
+    \caption{Comportamiento observado del algoritmo iterativo goloso.}
+    \label{fig:IG}
+\end{figure}
+
+\begin{itemize}
+	\item Explicación1
+\end{itemize}
 
 \section{Ejercicios/Problemas propuestos}
 
-\subsection{Header compartido: tsp_meta.h}
+\subsection{Header compartido: \texttt{tsp\_meta.h}}
 \inputminted{cpp}{../e-n/tsp.h}
+
+El archivo \texttt{tsp\_meta.h} define las estructuras y funciones comunes utilizadas
+para resolver el Problema del Agente Viajero (TSP) mediante ILS e IG.
+
+La estructura \texttt{Punto} representa las coordenadas de una ciudad, mientras que
+\texttt{Matriz} almacena las distancias entre todas las ciudades y \texttt{Ruta}
+contiene los índices que indican el orden de visita.
+
+La función \texttt{instancia12} proporciona las 12 ciudades del laboratorio.
+\texttt{matrizDist} calcula las distancias euclidianas mediante \texttt{hypot},
+mientras que \texttt{costo} obtiene el costo total del recorrido cerrado.
+\texttt{generarPuntos} permite crear instancias aleatorias reproducibles mediante
+una semilla.
+
+\texttt{vecinoMasCercano} construye una solución inicial desde la ciudad 0,
+seleccionando en cada paso la ciudad no visitada más cercana. Posteriormente,
+\texttt{dosOpt} mejora esta ruta invirtiendo tramos siempre que la variación
+$\Delta$ del costo sea negativa. El proceso se repite hasta alcanzar un óptimo local,
+es decir, hasta que ninguna inversión 2-opt considerada produzca una mejora.
+
+En ILS, \texttt{doubleBridge} perturba la ruta dividiéndola en tres puntos y
+reordenando los segmentos $A\,B\,C\,D$ como $A\,C\,B\,D$. Después se vuelve a
+aplicar \texttt{dosOpt}. La función \texttt{ils} repite este proceso con un criterio
+de aceptación estricta: conserva una solución nueva solo si mejora la solución actual.
+Además, almacena por separado la mejor ruta obtenida durante toda la ejecución.
+
+En IG, \texttt{ig} selecciona aleatoriamente \texttt{nDestruir} ciudades y las elimina
+de la ruta actual. Luego, las reinserta una a una en la posición que produce el menor
+incremento de costo. Este mecanismo permite conservar parte de la estructura buena,
+destruir una sección y reconstruir una nueva solución. Como en ILS, conserva únicamente
+una ruta nueva si mejora la solución actual y puede aplicar búsqueda local mediante
+\texttt{dosOpt}.
+
+Finalmente, \texttt{optimoHeldKarp} determina el costo óptimo mediante programación
+dinámica sobre subconjuntos de ciudades. Al tener complejidad exponencial, solo es
+práctico para instancias pequeñas y se utiliza como referencia para evaluar la calidad
+de las soluciones obtenidas por las metaheurísticas.
+
+En conjunto, \texttt{tsp\_meta.h} centraliza la instancia, el cálculo de distancias,
+la construcción de rutas, la búsqueda local, las perturbaciones, las metaheurísticas
+ILS e IG y el cálculo del óptimo exacto.
 
 \subsection{Ejercicio 1}
 Ejecuta el ILS del ejercicio resuelto con 10 semillas distintas (por ejemplo 1 a 10) y registra para cada una el costo final y la iteración en que se encontró. ¿En cuántas semillas se llega al óptimo 72.21? ¿Qué te dice eso sobre la confiabilidad de un algoritmo aleatorio?

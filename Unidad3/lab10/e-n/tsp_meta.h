@@ -1,10 +1,3 @@
-// tsp_meta.h
-// Utilidades compartidas por los ejercicios del Laboratorio 10 (ILS e IG para el TSP).
-//
-// Convenciones:
-//  - Una ruta es un vector<int> con una permutacion de 0..n-1 y se interpreta como
-//    circuito CERRADO (despues de la ultima ciudad se vuelve a la primera).
-//  - Las distancias son euclidianas en double, guardadas en una matriz n x n.
 #pragma once
 #include <vector>
 #include <random>
@@ -19,10 +12,6 @@ using Ruta = vector<int>;
 
 const double EPS = 1e-9;
 const double INF = numeric_limits<double>::infinity();
-
-// ---------------------------------------------------------------------------
-// Instancias
-// ---------------------------------------------------------------------------
 
 // n puntos con coordenadas de un decimal en [0, lado]. Se usa mt19937 "a mano"
 // (sin distribuciones de <random>) para que la instancia sea reproducible.
@@ -59,10 +48,6 @@ inline double costo(const Matriz &d, const Ruta &r) {
     for (int i = 0; i < n; i++) c += d[r[i]][r[(i + 1) % n]];
     return c;
 }
-
-// ---------------------------------------------------------------------------
-// Constructivo y busqueda local
-// ---------------------------------------------------------------------------
 
 // Nearest Neighbor: desde "inicio", ir siempre a la ciudad no visitada mas cercana.
 inline Ruta vecinoMasCercano(const Matriz &d, int inicio = 0) {
@@ -105,19 +90,12 @@ inline void dosOpt(const Matriz &d, Ruta &r) {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Resultado comun de las metaheuristicas
-// ---------------------------------------------------------------------------
 struct Resultado {
     Ruta mejor;
     double costoInicial = 0;  // NN + 2-opt
     double costoMejor = 0;
     int iterMejor = 0;        // iteracion en que aparecio la mejor solucion (0 = la inicial)
 };
-
-// ---------------------------------------------------------------------------
-// ILS: perturbacion double-bridge + 2-opt
-// ---------------------------------------------------------------------------
 
 // Corta la ruta en 3 puntos (4 segmentos A B C D) y la rearma como A C B D.
 inline Ruta doubleBridge(const Ruta &r, mt19937 &rng) {
@@ -168,9 +146,7 @@ inline Resultado ils(const Matriz &d, int iteraciones, unsigned semilla, double 
     return res;
 }
 
-// ---------------------------------------------------------------------------
 // IG: destruir "nDestruir" ciudades y reconstruir con insercion golosa
-// ---------------------------------------------------------------------------
 inline Resultado ig(const Matriz &d, int iteraciones, unsigned semilla, int nDestruir,
                     bool conBusquedaLocal = false) {
     mt19937 rng(semilla);
@@ -220,10 +196,8 @@ inline Resultado ig(const Matriz &d, int iteraciones, unsigned semilla, int nDes
     return res;
 }
 
-// ---------------------------------------------------------------------------
 // Optimo exacto (Held-Karp, programacion dinamica). Solo para n pequeno (<= ~20):
 // sirve para saber el optimo real de la instancia de 12 ciudades.
-// ---------------------------------------------------------------------------
 inline double optimoHeldKarp(const Matriz &d) {
     int n = (int)d.size(), m = n - 1;
     vector<double> dp((size_t)(1 << m) * m, INF);
