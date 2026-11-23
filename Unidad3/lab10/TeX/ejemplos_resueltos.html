@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejemplos resueltos: ILS e IG</title>
+  <style>
+    :root {
+      --ink: #263238;
+      --muted: #647276;
+      --paper: #f7f6f0;
+      --line: #d9dfdc;
+      --teal: #197c78;
+      --coral: #d45b45;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+    }
+
+    h1 { margin: 0 0 8px; font-size: 32px; line-height: 1.2; }
+    h2 { margin: 34px 0 10px; font-size: 22px; }
+    h3 { margin: 24px 0 8px; font-size: 17px; }
+    p { margin: 8px 0 14px; }
+
+    .subtitle { margin: 0; color: var(--muted); }
+
+    figure {
+      margin: 22px 0 30px;
+      text-align: center;
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    figcaption {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .resultado {
+      border-left: 4px solid var(--teal);
+      background: rgba(25, 124, 120, 0.07);
+      margin: 20px 0;
+      padding: 14px 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 24px;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+    }
+
+    th { background: #ecefe9; }
+
+    @media (max-width: 640px) {
+      main { padding: 28px 18px 44px; }
+      h1 { font-size: 26px; }
+      table { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Ejemplos resueltos: ILS e IG</h1>
+      <p class="subtitle">Comparación de la convergencia de las metaheurísticas sobre el TSP de 12 ciudades.</p>
+    </header>
+
+    <h2>Problema común</h2>
+    <p>
+      Ambas implementaciones resuelven el mismo TSP con 12 ciudades y semilla fija 42.
+      El óptimo exacto conocido es <strong>72.21</strong>. Las dos metaheurísticas realizan
+      200 iteraciones y conservan únicamente la mejor solución encontrada.
+    </p>
+
+    <h2>Búsqueda Local Iterada</h2>
+
+    <h3>Funcionamiento observado</h3>
+    <p>
+      El ILS comienza desde la ruta obtenida por Nearest Neighbor seguida de 2-opt.
+      En el código resuelto, el costo inicial es <strong>81.14</strong>. Durante cada
+      iteración se perturba la solución actual con double-bridge, se aplica 2-opt a la
+      ruta perturbada y se acepta la nueva solución solo si mejora el costo actual.
+    </p>
+
+    <figure>
+      <img src="../img/busqueda_local_iterada.png" alt="Convergencia del costo obtenido por Búsqueda Local Iterada">
+      <figcaption>
+        Figura 1. Evolución del mejor costo encontrado por ILS.
+      </figcaption>
+    </figure>
+
+    <p>
+      La gráfica muestra los cambios producidos por el ILS mediante una escalera
+      descendente. Cada escalón representa una iteración en la que se encontró una
+      solución mejor. El eje horizontal está limitado al rango de 0 a 3 iteraciones,
+      porque todas las mejoras se producen dentro de ese intervalo y no hace falta
+      mostrar las 197 iteraciones restantes sin cambios.
+    </p>
+
+    <p>
+      La línea horizontal corresponde al óptimo exacto 72.21. Cuando la trayectoria
+      alcanza esta línea, el ILS ha encontrado una solución con el costo óptimo. El
+      comportamiento descendente permite observar tanto la mejora inicial como la
+      capacidad de escapar de óptimos locales mediante la perturbación double-bridge.
+    </p>
+
+    <div class="resultado">
+      El ILS mejora la solución inicial de <strong>81.14</strong> hasta el costo final
+      encontrado por el programa. La convergencia es rápida al inicio y luego se vuelve
+      progresivamente más difícil encontrar mejoras adicionales.
+    </div>
+
+    <h2>Algoritmo Iterativo Goloso</h2>
+
+    <h3>Funcionamiento observado</h3>
+    <p>
+      El IG comienza con Nearest Neighbor, sin aplicar 2-opt al inicio. En cada iteración
+      destruye tres ciudades elegidas al azar, las elimina temporalmente de la ruta y
+      luego las reinserta una por una en la posición que produce el menor aumento de costo.
+    </p>
+
+    <p>
+      Después de reconstruir la ruta, se compara su costo con el costo actual y se acepta
+      exclusivamente si mejora. De esta manera, la destrucción aporta diversificación y
+      la inserción golosa aporta intensificación alrededor de la estructura conservada.
+    </p>
+
+    <figure>
+      <img src="../img/algoritmo_iterativo_goloso.png" alt="Convergencia del costo obtenido por el Algoritmo Iterativo Goloso">
+      <figcaption>
+        Figura 2. Evolución del mejor costo encontrado por IG.
+      </figcaption>
+    </figure>
+
+    <p>
+      La gráfica representa la mejor solución registrada hasta cada iteración.
+      Cada descenso corresponde a una reconstrucción que produjo un costo menor que
+      el costo actual. El eje horizontal se limita al rango de 0 a 55 iteraciones,
+      que incluye todas las mejoras; las iteraciones posteriores no producen cambios
+      en la mejor solución registrada.
+    </p>
+
+    <p>
+      La comparación con el óptimo exacto permite verificar si el IG obtiene una
+      solución próxima o igual al resultado óptimo. La destrucción de tres ciudades
+      genera una modificación intermedia: suficientemente fuerte para variar la ruta,
+      pero no tan grande como para reconstruir casi todo el recorrido desde cero.
+    </p>
+
+    <h2>Comparación de las gráficas</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Característica</th>
+          <th>ILS</th>
+          <th>IG</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Solución inicial</td>
+          <td>Nearest Neighbor + 2-opt</td>
+          <td>Nearest Neighbor</td>
+        </tr>
+        <tr>
+          <td>Diversificación</td>
+          <td>Perturbación double-bridge</td>
+          <td>Eliminación aleatoria de ciudades</td>
+        </tr>
+        <tr>
+          <td>Intensificación</td>
+          <td>Búsqueda local 2-opt</td>
+          <td>Inserción golosa</td>
+        </tr>
+        <tr>
+          <td>Representación</td>
+          <td>Costo mejor por iteración</td>
+          <td>Costo mejor por iteración</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>
+      Ambas gráficas utilizan una línea horizontal como referencia del óptimo exacto.
+      El eje horizontal representa el avance del algoritmo y el eje vertical representa
+      la calidad de la solución. Una trayectoria más cercana a 72.21 indica una solución
+      mejor; además, alcanzar una mejora en una iteración baja permite observar qué tan
+      rápida fue la metaheurística.
+    </p>
+
+    <div class="resultado">
+      El ILS utiliza una perturbación fuerte seguida de una búsqueda local. El IG conserva
+      parte de la solución actual y reconstruye las ciudades eliminadas con decisiones
+      golosas. En ambos métodos, la gráfica evidencia las mejoras aceptadas y no muestra
+      todas las soluciones candidatas rechazadas.
+    </div>
+  </main>
+</body>
+</html>

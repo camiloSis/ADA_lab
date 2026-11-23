@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 1 — ILS aplicado al TSP</title>
+  <style>
+    :root {
+      --ink: #263238;
+      --muted: #647276;
+      --paper: #f7f6f0;
+      --line: #d9dfdc;
+      --teal: #197c78;
+      --coral: #d45b45;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 48px 32px 64px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+      padding-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    h2 {
+      margin: 30px 0 10px;
+      font-size: 21px;
+    }
+
+    p { margin: 8px 0 14px; }
+
+    figure {
+      margin: 24px 0 30px;
+      text-align: center;
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    figcaption {
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .resultado {
+      border-left: 4px solid var(--teal);
+      background: rgba(25, 124, 120, 0.07);
+      margin: 22px 0;
+      padding: 14px 18px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin: 12px 0 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .legend span::before {
+      content: "";
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      margin-right: 7px;
+      vertical-align: -1px;
+      border: 1px solid var(--ink);
+    }
+
+    .legend .optimal::before { background: var(--teal); }
+    .legend .not-optimal::before { background: var(--coral); }
+
+    @media (max-width: 640px) {
+      main { padding: 28px 18px 44px; }
+      h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Ejercicio 1: ILS para el TSP</h1>
+      <p class="subtitle">Resultados obtenidos con 10 semillas y 100 iteraciones por ejecución.</p>
+    </header>
+
+    <h2>Configuración del experimento</h2>
+    <p>
+      Se ejecutó la Búsqueda Local Iterada sobre la instancia de 12 ciudades utilizando
+      las semillas del 1 al 10. El costo inicial se obtiene mediante Nearest Neighbor
+      seguido de búsqueda local 2-opt. En cada iteración se aplica la perturbación
+      double-bridge y posteriormente se vuelve a mejorar la ruta con 2-opt.
+    </p>
+
+    <p>
+      El criterio de aceptación es estricto: solamente se conserva la nueva solución
+      si mejora el costo de la solución actual. Independientemente de ello, el algoritmo
+      registra la mejor solución encontrada durante toda la ejecución.
+    </p>
+
+    <figure>
+      <img src="../img/e1.png" alt="Costo final e iteración de la mejor solución para diez semillas de ILS">
+      <figcaption>
+        Figura 1. Costo final e iteración en que se encontró la mejor solución por semilla.
+      </figcaption>
+    </figure>
+
+    <div class="legend" aria-label="Leyenda de colores">
+      <span class="optimal">Llegó al óptimo exacto</span>
+      <span class="not-optimal">No llegó al óptimo exacto</span>
+    </div>
+
+    <h2>Interpretación del costo final</h2>
+    <p>
+      La gráfica izquierda muestra el costo final obtenido por cada semilla. La línea
+      discontinua representa el óptimo exacto calculado mediante programación dinámica
+      Held-Karp, cuyo valor es <strong>72.21</strong>. Las barras verdes indican las
+      ejecuciones que alcanzaron este valor, mientras que las barras rojas representan
+      las ejecuciones que finalizaron en una solución diferente.
+    </p>
+
+    <p>
+      En este experimento, las diez semillas llegaron al costo óptimo de 72.21. Esto
+      significa que ILS pudo escapar de los óptimos locales obtenidos inicialmente y
+      encontró la mejor ruta en todas las ejecuciones registradas.
+    </p>
+
+    <h2>Interpretación de la iteración</h2>
+    <p>
+      La gráfica derecha presenta la iteración en que apareció por primera vez la mejor
+      solución de cada ejecución. Esta información no mide solamente la calidad final,
+      sino también la rapidez con que el algoritmo encontró esa solución.
+    </p>
+
+    <p>
+      Las primeras iteraciones son especialmente relevantes, pues indican que una
+      perturbación doble-bridge produjo rápidamente una ruta mejor. Cuando la iteración
+      es mayor, la mejor solución se encontró después de realizar varios ciclos de
+      perturbación y búsqueda local.
+    </p>
+
+    <div class="resultado">
+      <strong>Resultado:</strong> las 10 de 10 semillas alcanzaron el óptimo exacto de
+      72.21. Por esta razón, la confiabilidad observada en esta instancia fue del
+      <strong>100%</strong> para el conjunto de semillas probado.
+    </div>
+
+    <h2>Conclusión sobre la confiabilidad</h2>
+    <p>
+      Los resultados muestran que el ILS fue consistente para estas diez semillas sobre
+      la instancia de 12 ciudades. Sin embargo, obtener el óptimo en todas las ejecuciones
+      no demuestra que el algoritmo siempre encontrará la solución óptima para cualquier
+      instancia o cualquier conjunto de semillas.
+    </p>
+
+    <p>
+      Una ejecución exitosa depende de la perturbación, del estado inicial, del número
+      de iteraciones y de la estructura del problema. Por ello, las metaheurísticas deben
+      evaluarse con varias semillas y no únicamente con una ejecución aislada. En este
+      caso, la repetición de resultados proporciona evidencia de que el método es
+      robusto para esta instancia específica.
+    </p>
+  </main>
+</body>
+</html>
