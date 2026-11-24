@@ -1,6 +1,4 @@
-// Ejercicio 3: ILS con aceptacion estricta vs. aceptando una solucion peor con probabilidad 5 %.
-// La mejor solucion encontrada se guarda siempre aparte (dentro de ils()), aunque la actual empeore.
-// Se compara sobre el TSP de 12 ciudades (optimo conocido) y sobre uno de 50 ciudades.
+// Ejercicio 3: ILS con aceptación estricta y aceptación probabilística del 5 %.
 #include <iostream>
 #include <iomanip>
 #include <cmath>

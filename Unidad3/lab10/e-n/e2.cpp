@@ -1,5 +1,4 @@
-// Ejercicio 2: IG con d = 1, 2, 3, 5 y 8 ciudades destruidas, 10 semillas cada una.
-// Se reporta el costo promedio (y algunas medidas extra) para cada valor de d.
+// Ejercicio 2: comparación de IG para distintos valores de ciudades destruidas.
 #include <iostream>
 #include <iomanip>
 #include <cmath>

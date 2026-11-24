@@ -1,16 +1,16 @@
-// Cada ejercicio incluye este archivo y solo agrega su propio main
+// Cada ejercicio usa estas estructuras y heurísticas compartidas.
 #pragma once
 #include <bits/stdc++.h>
 using namespace std;
 
-using Mat  = vector<vector<double>>;
-using Ruta = vector<int>;   // orden de visita; el ciclo se cierra solo
-const double EPS = 1e-9;    // tolerancia: los doubles nunca se comparan con ==
+using Mat = vector<vector<double>>;
+using Ruta = vector<int>;  // Permutación que representa el recorrido cerrado
+const double EPS = 1e-9;
 
-// Instancia 
+// Instancia del problema y matriz de distancias.
 struct Instancia { int n; vector<pair<double, double>> p; Mat d; };
 
-// Los ejercicios trabajan con las mismas ciudades
+// Instancia 
 inline Instancia generar(int n, unsigned semilla = 42) {
     mt19937 gen(semilla);
     uniform_real_distribution<double> U(0, 100);
@@ -22,8 +22,7 @@ inline Instancia generar(int n, unsigned semilla = 42) {
     return I;
 }
 
-// Variante para coordenadas reales: distancias Haversine en km
-// La euclidiana sobre grados distorsiona a la latitud de Arequipa 1° de longitud mide ~4% menos que 1° de latitud
+// Distancias Haversine para coordenadas geográficas.
 inline double haversine(double lat1, double lon1, double lat2, double lon2) {
     const double R = 6371.0, rad = M_PI / 180;  // radio medio terrestre
     double a = pow(sin((lat2 - lat1) * rad / 2), 2) +
@@ -89,8 +88,7 @@ inline Ruta insercionBarata(int origen, const Mat& d) {
     return r;
 }
 
-// Busqueda local
-// 2-opt: invierte el tramo r[i+1..j]
+// Búsqueda local 2-opt: invierte el tramo r[i+1..j] si reduce el costo.
 inline Ruta dosOpt(Ruta r, const Mat& d) {
     int n = r.size();
     bool mejora = true;
@@ -109,7 +107,7 @@ inline Ruta dosOpt(Ruta r, const Mat& d) {
     return r;
 }
 
-// Resumen de resultados 
+// Estadísticas de costos obtenidos por varias ejecuciones.
 struct Resumen { double mejor, peor, media; int idxMejor, enMejor, distintos; };
 
 

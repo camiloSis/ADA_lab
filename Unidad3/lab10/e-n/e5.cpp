@@ -1,6 +1,4 @@
-// Ejercicio 5: ILS e IG sobre las 18 ubicaciones de Arequipa del laboratorio anterior
-// (coordenadas reales, distancias Haversine en km). Usa el tsp.h del laboratorio 9, sin cambios.
-// Las funciones de ILS e IG se escriben aqui, con el mismo estilo (Mat, Ruta, costo(r, d), dosOpt).
+// Ejercicio 5: aplicación de ILS e IG a ubicaciones reales de Arequipa.
 #include "tsp.h"
 
 struct Lugar { const char* nombre; double lat, lon; };
@@ -24,33 +22,31 @@ const vector<Lugar> LUGARES = {
     {"Mirador de Sachaca",                -16.42533, -71.56695},
     {"Mansión del Fundador",              -16.45504, -71.56368},
     {"Molino de Sabandía",                -16.45654, -71.49963},
-    // --- Puntos adicionales (parte B). [V] = coordenada de una fuente en línea; [A] = aproximada, verificar ---
-    {"Convento de Santa Teresa",              -16.39654, -71.53158},  // [V]
-    {"Plaza de Chiguata",                     -16.40245, -71.39195},  // [V]
-    {"Casa Tristan del Pozo",                 -16.39620, -71.53550},  // [A]
-    {"Parque Selva Alegre",                   -16.39210, -71.52520},  // [A]
-    {"Plaza de Miraflores",                   -16.39390, -71.52880},  // [A]
-    {"Plaza de Mariano Melgar",               -16.40480, -71.51850},  // [A]
-    {"Plaza de Jose Luis Bustamante y Rivero",-16.41950, -71.53200},  // [A]
-    {"Plaza de Alto Selva Alegre",            -16.38300, -71.51600},  // [A]
-    {"Plaza de Cerro Colorado",               -16.36400, -71.57400},  // [A]
-    {"Plaza de Jacobo Hunter",                -16.44300, -71.52900},  // [A]
-    {"Plaza de Paucarpata",                   -16.42100, -71.51300},  // [A]
-    {"Plaza de Socabaya",                     -16.45500, -71.53400},  // [A]
-    {"Plaza de Tiabaya",                      -16.44400, -71.58700},  // [A]
-    {"Plaza de Sachaca",                      -16.42090, -71.56390},  // [A]
-    {"Plaza de Characato",                    -16.46750, -71.48620},  // [A]
-    {"Plaza de Yura",                         -16.24670, -71.68380},  // [A]
-    {"Plaza de Uchumayo",                     -16.43720, -71.66480},  // [A]
-    {"Plaza de Quequeña",                     -16.56010, -71.44530},  // [A]
-    {"Plaza de Yarabamba",                    -16.55090, -71.48330},  // [A]
-    {"Aeropuerto Rodriguez Ballon",           -16.34110, -71.58310},  // [A]
+    {"Convento de Santa Teresa",              -16.39654, -71.53158},
+    {"Plaza de Chiguata",                     -16.40245, -71.39195},
+    {"Casa Tristan del Pozo",                 -16.39620, -71.53550},
+    {"Parque Selva Alegre",                   -16.39210, -71.52520},
+    {"Plaza de Miraflores",                   -16.39390, -71.52880},
+    {"Plaza de Mariano Melgar",               -16.40480, -71.51850},
+    {"Plaza de Jose Luis Bustamante y Rivero",-16.41950, -71.53200},
+    {"Plaza de Alto Selva Alegre",            -16.38300, -71.51600},
+    {"Plaza de Cerro Colorado",               -16.36400, -71.57400},
+    {"Plaza de Jacobo Hunter",                -16.44300, -71.52900},
+    {"Plaza de Paucarpata",                   -16.42100, -71.51300},
+    {"Plaza de Socabaya",                     -16.45500, -71.53400},
+    {"Plaza de Tiabaya",                      -16.44400, -71.58700},
+    {"Plaza de Sachaca",                      -16.42090, -71.56390},
+    {"Plaza de Characato",                    -16.46750, -71.48620},
+    {"Plaza de Yura",                         -16.24670, -71.68380},
+    {"Plaza de Uchumayo",                     -16.43720, -71.66480},
+    {"Plaza de Quequeña",                     -16.56010, -71.44530},
+    {"Plaza de Yarabamba",                    -16.55090, -71.48330},
+    {"Aeropuerto Rodriguez Ballon",           -16.34110, -71.58310},
 };
 
-// Cantidad de lugares originales: la parte A usa solo los primeros N_BASE (Held-Karp no soporta más).
 const int N_BASE = 18;
 
-// Optimo exacto (Held-Karp), igual que en el laboratorio 9.
+// Optimo exacto mediante programación dinámica.
 double optimo(const Mat& d) {
     int m = d.size() - 1, N = 1 << m;
     vector<vector<double>> dp(N, vector<double>(m, 1e18));
@@ -68,7 +64,7 @@ double optimo(const Mat& d) {
 
 struct Res { Ruta ruta; double c; int iter; };  // mejor ruta, su costo e iteracion en que aparecio (0 = inicial)
 
-// ---- ILS: perturbacion double-bridge + 2-opt, aceptacion estricta ----
+// ---- ILS: perturbación double-bridge seguida de 2-opt ----
 Ruta doubleBridge(const Ruta& r, mt19937& g) {
     int n = r.size(), p[3];
     do {
@@ -94,7 +90,7 @@ Res ils(const Mat& d, Ruta act, int iters, unsigned semilla) {
     return R;
 }
 
-// ---- IG: destruir k ciudades y reinsertarlas en la posicion que menos aumenta el costo ----
+// IG: destruye ciudades y reconstruye por inserción golosa.
 Res ig(const Mat& d, Ruta act, int iters, unsigned semilla, int k) {
     mt19937 g(semilla);
     double ca = costo(act, d);
@@ -136,10 +132,6 @@ void imprimirRuta(const Ruta& r0, const Mat& d) {
     }
 }
 
-
-// ---------------- PARTE B: mas nodos (todo LUGARES) ----------------
-// Con tantos puntos ya no se puede calcular el optimo exacto (Held-Karp), asi que se compara
-// entre metodos: NN, NN + 2-opt, ILS e IG (con varios k), en costo y tiempo.
 double msDesde(chrono::steady_clock::time_point t0) {
     return chrono::duration<double, milli>(chrono::steady_clock::now() - t0).count();
 }
@@ -237,14 +229,4 @@ int main() {
     Resumen ri = resumir(cI), rg = resumir(cG);
     printf("\n%-6s mejor %.3f | media %.3f | peor %.3f | llega al optimo en %d/%d semillas\n", "ILS", ri.mejor, ri.media, ri.peor, optI, SEMILLAS);
     printf("%-6s mejor %.3f | media %.3f | peor %.3f | llega al optimo en %d/%d semillas\n", "IG", rg.mejor, rg.media, rg.peor, optG, SEMILLAS);
-
-    // --- Ruta final: la mejor encontrada entre ILS e IG (empate -> ILS) ---
-    bool daILS = mejorI.c <= mejorG.c + EPS;
-    const Res& M = daILS ? mejorI : mejorG;
-    printf("\nRuta cerrada mas corta encontrada (%s, inicio y fin: %s):\n", daILS ? "ILS" : "IG", LUGARES[0].nombre);
-    imprimirRuta(M.ruta, I.d);
-    printf("\nCosto: %.3f km | Solo NN: %.3f km (%.1f%% menos) | NN+2opt: %.3f km (%.1f%% menos) | optimo: %.3f km\n",
-           M.c, cNN0, 100 * (cNN0 - M.c) / cNN0, cIni, 100 * (cIni - M.c) / cIni, opt);
-    parteB();
-    return 0;
 }

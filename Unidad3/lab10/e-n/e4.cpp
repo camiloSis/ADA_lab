@@ -1,5 +1,3 @@
-// Ejercicio 4: TSP aleatorio de 50 ciudades (semilla fija). Compara Nearest Neighbor,
-// NN + 2-opt, ILS e IG (500 iteraciones cada uno) en costo y tiempo de ejecucion.
 #include <iostream>
 #include <iomanip>
 #include <chrono>
@@ -23,7 +21,6 @@ int main() {
     const int N = 50, ITER = 500, D_IG = 3, SEMILLAS = 10;
     Matriz d = matrizDist(generarPuntos(N, 2026, 100.0));
 
-    // --- Una corrida de cada metodo (semilla 1 para ILS e IG) ---
     auto t0 = Reloj::now();
     Ruta nn = vecinoMasCercano(d);
     auto t1 = Reloj::now();
@@ -62,7 +59,6 @@ int main() {
     fila("ILS", rils.costoMejor, tILS);
     fila("IG", rig.costoMejor, tIG);
 
-    // --- Promedio con varias semillas para no depender de una sola corrida ---
     double sIls = 0, sIg = 0, tIls = 0, tIg = 0;
     for (int s = 1; s <= SEMILLAS; s++) {
         t0 = Reloj::now();

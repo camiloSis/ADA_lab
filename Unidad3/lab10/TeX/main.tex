@@ -40,8 +40,8 @@
 \newcommand{\itemDepartment}{Departamento Académico de Ingeniería de Sistemas e Informática}
 \newcommand{\itemSchool}{Escuela Profesional de Ingeniería de Sistemas}
 \newcommand{\itemAcademic}{2026 - B}
-\newcommand{\itemInput}{12/11/2026}
-\newcommand{\itemOutput}{16/11/2026}
+\newcommand{\itemInput}{19/11/2026}
+\newcommand{\itemOutput}{23/11/2026}
 \newcommand{\itemPracticeNumber}{10}
 \newcommand{\itemTheme}{Métodos Evolutivos y Metaheurísticos.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -165,18 +165,20 @@ ciudad 0. Con 12 ciudades la fuerza bruta ya sería lenta (11! rutas), así que 
 \end{figure}
 
 \begin{itemize}
-	\item Explicación1
+	\item El código inicia con Nearest Neighbor y 2-opt, que producen la ruta local inicial con costo 81.14. En cada una de las 200 iteraciones se perturba esta ruta mediante \textit{double-bridge}, se vuelve a mejorar con 2-opt y se acepta la candidata únicamente si reduce el costo actual.
+	\item La solución final conserva el mejor costo encontrado, que coincide con el óptimo 72.21, y muestra el circuito cerrado final con la ciudad 0 como origen y destino.
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.95\textwidth]{../img/busqueda_local_iterada.png}
-    \caption{Comportamiento observada de búsqueda local iterada.}
+    \caption{Comportamiento observado de búsqueda local iterada.}
     \label{fig:ILS_diagrama}
 \end{figure}
 
 \begin{itemize}
-	\item Explicación1
+	\item La gráfica muestra la evolución del mejor costo por iteración. El eje horizontal está limitado hasta la iteración 3 porque en ese intervalo aparecen las únicas mejoras: de 81.14 a 74.32 y luego a 72.21.
+	\item La línea de referencia representa el óptimo exacto. Los escalones horizontales indican que el costo no cambia; las bajadas muestran los momentos en que ILS encontró una solución mejor.
 \end{itemize}
 
 
@@ -191,7 +193,8 @@ ciudad 0. Con 12 ciudades la fuerza bruta ya sería lenta (11! rutas), así que 
 \end{figure}
 
 \begin{itemize}
-	\item Explicación1
+	\item El código comienza con Nearest Neighbor y conserva el costo inicial. En cada iteración elimina al azar tres ciudades de la ruta, las reinsertan mediante inserción golosa y acepta la reconstrucción solo si reduce el costo actual.
+	\item La ejecución conserva la mejor solución encontrada y obtiene finalmente la ruta óptima con costo 72.21.
 \end{itemize}
 
 \begin{figure}[H]
@@ -202,7 +205,8 @@ ciudad 0. Con 12 ciudades la fuerza bruta ya sería lenta (11! rutas), así que 
 \end{figure}
 
 \begin{itemize}
-	\item Explicación1
+	\item La gráfica presenta el mejor costo obtenido hasta cada iteración. Se limita al rango de 0 a 55 iteraciones porque las mejoras aparecen en ese intervalo; después no se encuentra ninguna solución mejor.
+	\item La trayectoria baja desde el costo inicial 84.73 hasta 72.21. Cada descenso representa una reconstrucción aceptada y los tramos horizontales corresponden a iteraciones sin mejora de la mejor solución.
 \end{itemize}
 
 \section{Ejercicios/Problemas propuestos}
@@ -210,46 +214,31 @@ ciudad 0. Con 12 ciudades la fuerza bruta ya sería lenta (11! rutas), así que 
 \subsection{Header compartido: \texttt{tsp\_meta.h}}
 \inputminted{cpp}{../e-n/tsp.h}
 
-El archivo \texttt{tsp\_meta.h} define las estructuras y funciones comunes utilizadas
-para resolver el Problema del Agente Viajero (TSP) mediante ILS e IG.
+El archivo \texttt{tsp\_meta.h} define las estructuras y funciones comunes para
+resolver el TSP mediante ILS e IG. \texttt{Punto} representa las coordenadas de
+una ciudad, \texttt{Ruta} el orden de visita y \texttt{Matriz} las distancias.
 
-La estructura \texttt{Punto} representa las coordenadas de una ciudad, mientras que
-\texttt{Matriz} almacena las distancias entre todas las ciudades y \texttt{Ruta}
-contiene los índices que indican el orden de visita.
+\texttt{instancia12} proporciona las ciudades del laboratorio,
+\texttt{matrizDist} calcula las distancias euclidianas y \texttt{costo} obtiene
+el costo del recorrido cerrado. \texttt{generarPuntos} permite crear instancias
+aleatorias reproducibles.
 
-La función \texttt{instancia12} proporciona las 12 ciudades del laboratorio.
-\texttt{matrizDist} calcula las distancias euclidianas mediante \texttt{hypot},
-mientras que \texttt{costo} obtiene el costo total del recorrido cerrado.
-\texttt{generarPuntos} permite crear instancias aleatorias reproducibles mediante
-una semilla.
+\texttt{vecinoMasCercano} construye la solución inicial eligiendo siempre la ciudad
+no visitada más cercana desde la ciudad actual. \texttt{dosOpt} mejora la ruta
+mediante inversiones que reducen su costo hasta alcanzar un óptimo local.
 
-\texttt{vecinoMasCercano} construye una solución inicial desde la ciudad 0,
-seleccionando en cada paso la ciudad no visitada más cercana. Posteriormente,
-\texttt{dosOpt} mejora esta ruta invirtiendo tramos siempre que la variación
-$\Delta$ del costo sea negativa. El proceso se repite hasta alcanzar un óptimo local,
-es decir, hasta que ninguna inversión 2-opt considerada produzca una mejora.
+En ILS, \texttt{doubleBridge} divide la ruta en tres puntos y transforma
+$A\,B\,C\,D$ en $A\,C\,B\,D$. Luego, \texttt{dosOpt} vuelve a mejorar la solución.
+\texttt{ils} acepta únicamente una ruta nueva si mejora el costo actual y conserva
+separadamente la mejor solución encontrada.
 
-En ILS, \texttt{doubleBridge} perturba la ruta dividiéndola en tres puntos y
-reordenando los segmentos $A\,B\,C\,D$ como $A\,C\,B\,D$. Después se vuelve a
-aplicar \texttt{dosOpt}. La función \texttt{ils} repite este proceso con un criterio
-de aceptación estricta: conserva una solución nueva solo si mejora la solución actual.
-Además, almacena por separado la mejor ruta obtenida durante toda la ejecución.
+En IG, \texttt{ig} elimina \texttt{nDestruir} ciudades elegidas aleatoriamente y
+las reinserta en la posición que menos incrementa el costo. Así, combina destrucción
+para diversificar y reconstrucción golosa para intensificar.
 
-En IG, \texttt{ig} selecciona aleatoriamente \texttt{nDestruir} ciudades y las elimina
-de la ruta actual. Luego, las reinserta una a una en la posición que produce el menor
-incremento de costo. Este mecanismo permite conservar parte de la estructura buena,
-destruir una sección y reconstruir una nueva solución. Como en ILS, conserva únicamente
-una ruta nueva si mejora la solución actual y puede aplicar búsqueda local mediante
-\texttt{dosOpt}.
-
-Finalmente, \texttt{optimoHeldKarp} determina el costo óptimo mediante programación
-dinámica sobre subconjuntos de ciudades. Al tener complejidad exponencial, solo es
-práctico para instancias pequeñas y se utiliza como referencia para evaluar la calidad
-de las soluciones obtenidas por las metaheurísticas.
-
-En conjunto, \texttt{tsp\_meta.h} centraliza la instancia, el cálculo de distancias,
-la construcción de rutas, la búsqueda local, las perturbaciones, las metaheurísticas
-ILS e IG y el cálculo del óptimo exacto.
+Finalmente, \texttt{optimoHeldKarp} calcula el costo óptimo mediante programación
+dinámica sobre subconjuntos de ciudades. Su complejidad exponencial limita su uso
+a instancias pequeñas, y sirve como referencia para evaluar las metaheurísticas.
 
 \subsection{Ejercicio 1}
 Ejecuta el ILS del ejercicio resuelto con 10 semillas distintas (por ejemplo 1 a 10) y registra para cada una el costo final y la iteración en que se encontró. ¿En cuántas semillas se llega al óptimo 72.21? ¿Qué te dice eso sobre la confiabilidad de un algoritmo aleatorio?
@@ -262,6 +251,11 @@ Ejecuta el ILS del ejercicio resuelto con 10 semillas distintas (por ejemplo 1 a
     \label{fig:e1}
 \end{figure}
 
+\begin{itemize}
+	\item El programa calcula la matriz de distancias, el óptimo exacto y la solución inicial NN+2-opt. Después ejecuta ILS con las semillas del 1 al 10 y registra el costo, la iteración y si alcanza el óptimo.
+	\item La figura presenta los resultados de las diez ejecuciones. Permite comparar visualmente los costos finales y las iteraciones donde se encontró la mejor solución.
+\end{itemize}
+
 \subsection{Ejercicio 2}
 Modifica el IG para probar d = 1, 2, 3, 5 y 8 ciudades destruidas. Para cada valor, ejecútalo con 10 semillas y reporta el costo promedio. ¿Qué pasa con d muy pequeño? ¿Y con d muy grande? Relaciona tus resultados con los conceptos de intensificación y diversificación.
 \inputminted{cpp}{../e-n/e2.cpp}
@@ -269,9 +263,14 @@ Modifica el IG para probar d = 1, 2, 3, 5 y 8 ciudades destruidas. Para cada val
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../img/e2.png}
-    \caption{Ejecución del ejercicio 2}
+    \caption{Costo promedio y rango obtenido por IG al variar la cantidad de ciudades destruidas.}
     \label{fig:e2}
 \end{figure}
+
+\begin{itemize}
+	\item El programa utiliza cinco valores de \texttt{d} y diez semillas para cada uno. Para cada ejecución llama a \texttt{ig}, acumula el costo obtenido y calcula el promedio, el mejor, el peor, los aciertos al óptimo y la brecha relativa.
+	\item El diagrama muestra el costo promedio por cada valor de \texttt{d}; el área sombreada representa el intervalo entre el mejor y el peor resultado. También indica cuántas semillas alcanzaron el óptimo.
+\end{itemize}
 
 \subsection{Ejercicio 3}
 Cambia el criterio de aceptación del ILS: además de aceptar soluciones mejores, acepta una solución peor con probabilidad 5\%. Compara el resultado con el criterio ``solo si mejora'' usando varias semillas. ¿Ayuda aceptar soluciones peores a escapar de los valles? Guarda siempre la mejor solución encontrada, aunque la actual empeore.
@@ -280,9 +279,14 @@ Cambia el criterio de aceptación del ILS: además de aceptar soluciones mejores
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{../img/e3.png}
-    \caption{Ejecución del ejercicio 3}
+    \caption{Comparación visual de los criterios estricta y probabilística de aceptación del ILS.}
     \label{fig:e3}
 \end{figure}
+
+\begin{itemize}
+	\item La función \texttt{comparar} ejecuta ILS con probabilidades de aceptación \texttt{0.0} y \texttt{0.05}. Para cada criterio calcula el promedio, el mejor resultado, el peor resultado y el número de veces que alcanza el óptimo.
+	\item Los diagramas comparan el costo promedio y el rango entre el mejor y el peor resultado para el TSP de 12 y 50 ciudades. Las barras permiten observar si aceptar soluciones peores mejora o deteriora la calidad obtenida.
+\end{itemize}
 
 \subsection{Ejercicio 4}
 Genera un TSP aleatorio de 50 ciudades (con semilla fija) y compara cuatro métodos: Nearest Neighbor, NN+2-opt, ILS e IG con 500 iteraciones cada uno. Reporta costo y tiempo de ejecución en una tabla. ¿Cuánto mejora cada metaheurística respecto a NN+2-opt y a qué costo de tiempo?
@@ -290,10 +294,15 @@ Genera un TSP aleatorio de 50 ciudades (con semilla fija) y compara cuatro méto
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../img/e4.png}
-    \caption{Ejecución del ejercicio 4}
+    \includegraphics[width=0.85\textwidth]{../img/e4.png}
+    \caption{Comparación visual del costo y tiempo de ejecución para los cuatro métodos.}
     \label{fig:e4}
 \end{figure}
+
+\begin{itemize}
+	\item El programa genera 50 ciudades con semilla fija y mide el costo y el tiempo de NN, NN+2-opt, ILS e IG. Luego repite ILS e IG con diez semillas y calcula sus promedios de costo y tiempo.
+	\item Los diagramas comparan lado a lado la calidad de cada ruta y su tiempo de ejecución. Así se relaciona directamente la mejora del costo con el costo computacional requerido por cada método.
+\end{itemize}
 
 \subsection{Ejercicio 5}
 Aplica la metaheurística que mejor te funcionó a un caso real: el recorrido de entrega por 15 a 20 puntos de tu ciudad (o capitales del Perú) con coordenadas reales o aproximadas. Muestra la ruta final y compárala con la ruta que obtendrías con solo Nearest Neighbor. Justifica por qué elegiste ILS o IG.
@@ -301,21 +310,94 @@ Aplica la metaheurística que mejor te funcionó a un caso real: el recorrido de
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{../img/e5.png}
-    \caption{Ejecución del ejercicio 5}
+    \includegraphics[width=0.85\textwidth]{../img/e5.png}
+    \caption{Recorrido obtenido en Arequipa y comparación de costos entre ILS/IG, NN y NN+2-opt.}
     \label{fig:e5}
 \end{figure}
 
-\section{Cuestionario}
-
 \begin{itemize}
-    \item ¿Qué es un óptimo local? ¿Por qué 2-opt, por sí solo, no puede salir de él aunque exista una ruta mejor?
-    \item ¿Qué diferencia hay entre intensificación y diversificación? Indica qué componente de ILS y qué componente de IG se encargan de cada una.
-    \item En ILS y en IG la solución nueva solo se acepta si mejora la actual. ¿Qué ventaja y qué riesgo tiene este criterio de aceptación?
-    \item ¿Qué pasaría en ILS si la perturbación fuera demasiado débil? ¿Y si fuera tan fuerte que cambiara casi toda la ruta? Explica con el paisaje de soluciones de la Figura 1.
-    \item Según la Figura 7, ILS baja más rápido por iteración que IG. ¿Significa eso que ILS es siempre mejor? Considera el costo de cada iteración en ambos algoritmos.
+	\item El programa define ubicaciones reales de Arequipa y construye distancias Haversine mediante \texttt{desdeCoordenadas}. Para las primeras 18 ubicaciones calcula el óptimo exacto y compara NN, NN+2-opt, ILS e IG sobre varias semillas.
+	\item Finalmente conserva la mejor ruta encontrada, la rota desde la Plaza de Armas y presenta los nombres de los lugares, los tramos acumulados y el costo en kilómetros. La parte B amplía el análisis a más ubicaciones sin Held-Karp.
+	\item El diagrama muestra la ruta sobre las coordenadas geográficas y una comparación final de costos. Permite relacionar visualmente la mejora obtenida con el recorrido real.
 \end{itemize}
 
+\section{Cuestionario}
+
+\begin{enumerate}
+    \item \textbf{¿Qué es un óptimo local y por qué 2-opt no puede salir de él?}
+
+    Un óptimo local es una solución que no puede mejorar mediante pequeños cambios
+    disponibles en su vecindario. 2-opt solamente invierte segmentos cuando reduce
+    el costo, por lo que al llegar a una configuración estable rechaza cualquier
+    modificación 2-opt que no mejore inmediatamente. Por eso no puede abandonar
+    ese valle aunque exista una ruta mejor en otra región del espacio de soluciones.
+
+    \item \textbf{¿Qué diferencia existe entre intensificación y diversificación?}
+
+    La intensificación explora con mayor detalle regiones que ya contienen buenas
+    soluciones; en ILS corresponde a 2-opt y en IG a la inserción golosa. La
+    diversificación cambia la búsqueda para explorar regiones nuevas; en ILS está
+    representada por \textit{double-bridge} y en IG por la destrucción aleatoria de
+    ciudades.
+
+    \item \textbf{¿Qué ventaja y qué riesgo tiene aceptar únicamente soluciones mejores?}
+
+    Este criterio es estable y evita un deterioro continuo del recorrido actual.
+    También hace que la búsqueda converja rápidamente hacia regiones buenas. Sin
+    embargo, puede quedar atrapada en óptimos locales y evita explorar rutas peores
+    que podrían conducir posteriormente a una solución global mejor.
+
+    \item \textbf{¿Qué ocurre si la perturbación de ILS es demasiado débil o demasiado fuerte?}
+
+    Una perturbación débil produce cambios menores y puede regresar a soluciones
+    cercanas al mismo óptimo local. Una perturbación excesivamente fuerte genera
+    una nueva ruta muy alejada de la región conocida y convierte ILS en una búsqueda
+    casi aleatoria, perdiendo la información útil de las buenas soluciones previas.
+
+    \item \textbf{¿ILS siempre será mejor que IG por converger más rápido?}
+
+    No. El número de iteraciones no determina por sí solo cuál método es mejor. ILS
+    puede mejorar rápidamente porque cada iteración aplica 2-opt, pero esta búsqueda
+    local tiene un costo mayor. IG puede usar menos tiempo por iteración, aunque
+    requiera más pasos para alcanzar una buena solución. Por ello, deben considerarse
+    tanto la calidad obtenida como el tiempo de cómputo.
+\end{enumerate}
+
 \section{Conclusiones}
+
+\begin{itemize}
+    \item NN proporcionó una solución inicial rápida, pero no garantizó una ruta
+    cercana al óptimo. Al aplicar 2-opt se obtuvo una mejora importante, aunque
+    el resultado pudo quedar en un óptimo local.
+
+    \item ILS mostró una buena capacidad de diversificación mediante
+    \textit{double-bridge} y una búsqueda local efectiva con 2-opt. En las pruebas
+    desarrolladas permitió alcanzar soluciones óptimas o cercanas al óptimo.
+
+    \item IG combinó adecuadamente la destrucción aleatoria de ciudades con la
+    reconstrucción golosa. El número de ciudades destruidas controló el equilibrio
+    entre intensificación y diversificación.
+
+    \item El criterio estricto de aceptación fue consistente y evitó la degradación
+    continua del recorrido. Sin embargo, aceptar soluciones peores con cierta
+    probabilidad puede proporcionar una exploración adicional, dependiendo de la
+    instancia y de las semillas utilizadas.
+
+    \item En el caso práctico de 18 ubicaciones de Arequipa, tanto ILS como IG
+    llegaron al óptimo exacto de $26.988$ km en las diez semillas. La mejor ruta
+    obtuvo una reducción de 5.7\% respecto de Nearest Neighbor y de 0.3\% respecto
+    de NN+2-opt.
+
+    \item Para la instancia ampliada de 38 ubicaciones no fue posible aplicar
+    Held-Karp. En esta comparación, ILS y varias configuraciones de IG alcanzaron
+    aproximadamente $127.730$ km, evidenciando que las metaheurísticas pueden
+    obtener resultados cercanos con un costo de ejecución razonable.
+
+    \item El trabajo confirmó que la calidad de una metaheurística debe evaluarse
+    con varias semillas, ya que una sola ejecución puede no representar su desempeño
+    habitual. También deben considerarse el costo de las iteraciones, el tiempo total
+    y la complejidad de la instancia.
+\end{itemize}
+
 
 \end{document}

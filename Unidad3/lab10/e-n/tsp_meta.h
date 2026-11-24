@@ -1,3 +1,4 @@
+// Utilidades comunes para las metaheurísticas ILS e IG.
 #pragma once
 #include <vector>
 #include <random>
@@ -13,8 +14,7 @@ using Ruta = vector<int>;
 const double EPS = 1e-9;
 const double INF = numeric_limits<double>::infinity();
 
-// n puntos con coordenadas de un decimal en [0, lado]. Se usa mt19937 "a mano"
-// (sin distribuciones de <random>) para que la instancia sea reproducible.
+// Genera una instancia aleatoria reproducible.
 inline vector<Punto> generarPuntos(int n, unsigned semilla, double lado) {
     mt19937 rng(semilla);
     int pasos = (int)lround(lado * 10) + 1;
@@ -26,8 +26,7 @@ inline vector<Punto> generarPuntos(int n, unsigned semilla, double lado) {
     return p;
 }
 
-// TSP de 12 ciudades del ejercicio resuelto por la docente (optimo exacto = 72.21),
-// usado en los ejercicios 1 a 3.
+// Instancia de 12 ciudades; el óptimo exacto conocido es 72.21.
 inline vector<Punto> instancia12() {
     return {{0, 0}, {3, 14}, {18, 5}, {8, 7}, {6, 2}, {10, 0},
             {4, 4}, {1, 13}, {19, 11}, {8, 14}, {2, 17}, {7, 18}};
@@ -49,7 +48,7 @@ inline double costo(const Matriz &d, const Ruta &r) {
     return c;
 }
 
-// Nearest Neighbor: desde "inicio", ir siempre a la ciudad no visitada mas cercana.
+// Nearest Neighbor: selecciona siempre la ciudad no visitada más cercana.
 inline Ruta vecinoMasCercano(const Matriz &d, int inicio = 0) {
     int n = (int)d.size();
     vector<bool> vis(n, false);
@@ -69,8 +68,7 @@ inline Ruta vecinoMasCercano(const Matriz &d, int inicio = 0) {
     return r;
 }
 
-// 2-opt: invierte tramos mientras alguna inversion reduzca el costo.
-// Calcula el cambio con solo 4 aristas (delta), sin recalcular toda la ruta.
+// 2-opt: invierte un tramo si el cambio de cuatro aristas reduce el costo.
 inline void dosOpt(const Matriz &d, Ruta &r) {
     int n = (int)r.size();
     bool mejora = true;
@@ -92,12 +90,13 @@ inline void dosOpt(const Matriz &d, Ruta &r) {
 
 struct Resultado {
     Ruta mejor;
-    double costoInicial = 0;  // NN + 2-opt
+    double costoInicial = 0;
     double costoMejor = 0;
-    int iterMejor = 0;        // iteracion en que aparecio la mejor solucion (0 = la inicial)
+    int iterMejor = 0;
 };
 
 // Corta la ruta en 3 puntos (4 segmentos A B C D) y la rearma como A C B D.
+// Perturbación double-bridge: reordena los segmentos A B C D como A C B D.
 inline Ruta doubleBridge(const Ruta &r, mt19937 &rng) {
     int n = (int)r.size();
     int p[3];
@@ -107,15 +106,14 @@ inline Ruta doubleBridge(const Ruta &r, mt19937 &rng) {
     } while (p[0] == p[1] || p[1] == p[2]);
     Ruta nueva;
     nueva.reserve(n);
-    nueva.insert(nueva.end(), r.begin(), r.begin() + p[0]);        // A
-    nueva.insert(nueva.end(), r.begin() + p[1], r.begin() + p[2]); // C
-    nueva.insert(nueva.end(), r.begin() + p[0], r.begin() + p[1]); // B
-    nueva.insert(nueva.end(), r.begin() + p[2], r.end());          // D
+    nueva.insert(nueva.end(), r.begin(), r.begin() + p[0]);
+    nueva.insert(nueva.end(), r.begin() + p[1], r.begin() + p[2]);
+    nueva.insert(nueva.end(), r.begin() + p[0], r.begin() + p[1]);
+    nueva.insert(nueva.end(), r.begin() + p[2], r.end());
     return nueva;
 }
 
-// probPeor = 0   -> aceptacion estricta (solo si mejora la actual).
-// probPeor > 0   -> ademas acepta una solucion peor con esa probabilidad.
+// probPeor permite aceptar peores con probabilidad; la mejor solución se conserva aparte.
 // Siempre se guarda aparte la mejor solucion encontrada.
 inline Resultado ils(const Matriz &d, int iteraciones, unsigned semilla, double probPeor = 0.0) {
     mt19937 rng(semilla);
@@ -146,7 +144,7 @@ inline Resultado ils(const Matriz &d, int iteraciones, unsigned semilla, double 
     return res;
 }
 
-// IG: destruir "nDestruir" ciudades y reconstruir con insercion golosa
+// IG: destruye ciudades y reconstruye por inserción golosa.
 inline Resultado ig(const Matriz &d, int iteraciones, unsigned semilla, int nDestruir,
                     bool conBusquedaLocal = false) {
     mt19937 rng(semilla);
@@ -185,7 +183,7 @@ inline Resultado ig(const Matriz &d, int iteraciones, unsigned semilla, int nDes
         if (conBusquedaLocal) dosOpt(d, cand);
 
         double cc = costo(d, cand);
-        if (cc < cActual - EPS) {          // aceptacion estricta
+        if (cc < cActual - EPS) {
             actual = cand;
             cActual = cc;
             res.mejor = actual;
@@ -196,8 +194,7 @@ inline Resultado ig(const Matriz &d, int iteraciones, unsigned semilla, int nDes
     return res;
 }
 
-// Optimo exacto (Held-Karp, programacion dinamica). Solo para n pequeno (<= ~20):
-// sirve para saber el optimo real de la instancia de 12 ciudades.
+// Optimo exacto con programación dinámica sobre subconjuntos de ciudades.
 inline double optimoHeldKarp(const Matriz &d) {
     int n = (int)d.size(), m = n - 1;
     vector<double> dp((size_t)(1 << m) * m, INF);

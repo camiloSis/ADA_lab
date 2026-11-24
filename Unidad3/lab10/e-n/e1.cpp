@@ -1,5 +1,4 @@
-// Ejercicio 1: ILS con 10 semillas (1 a 10) sobre el TSP de 12 ciudades.
-// Para cada semilla: costo final e iteracion en que se encontro la mejor ruta.
+// Ejercicio 1: ILS con 10 semillas sobre el TSP de 12 ciudades.
 #include <iostream>
 #include <iomanip>
 #include <cmath>
